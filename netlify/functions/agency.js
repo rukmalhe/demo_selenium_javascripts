@@ -3,7 +3,7 @@ const handler = async () => {
     statusCode: 200,
     headers: { "Content-Type": "text/plain" },
     body: "Hi"
-  }
-}
+  };
+};
 
-module.export = { handler }
+module.exports = { handler };
