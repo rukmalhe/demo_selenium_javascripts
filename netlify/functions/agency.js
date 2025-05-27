@@ -5,3 +5,5 @@ const handler = async () => {
     body: "Hi"
   }
 }
+
+module.export = { handler }
