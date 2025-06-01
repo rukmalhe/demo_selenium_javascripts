@@ -4,5 +4,23 @@
   },
   "scripts": {
     "dev": "netlify dev"
+  },
+  "name": "job-agency-service",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rukmalhe/job-agency-service.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rukmalhe/job-agency-service/issues"
+  },
+  "homepage": "https://github.com/rukmalhe/job-agency-service#readme",
+  "description": "",
+  "dependencies": {
+    "mongodb": "^6.16.0"
   }
 }
