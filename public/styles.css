@@ -30,8 +30,6 @@ body {
 
 }
 
-
-
 .top-content-position {
   z-index: 5;
   position: relative;
@@ -211,13 +209,17 @@ body {
 
 }
 
-.site-footer {
+.site-footer p {
   color: #a6a6a6;
   background-color: antiquewhite;
   text-align: center;
   font-size: .87rem;
   margin: 0;
   padding: 0 0 0 65px;
+}
+
+.site-footer .logout-footer {
+  padding: 0;
 }
 
 .list-of-clients {
@@ -309,4 +311,37 @@ body {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     column-gap: 16px;
   }
+}
+
+/*Admin page*/
+.form-field {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  margin: 0 0 16px;
+  border: 1px solid rgba(0, 0, 0, 0, 0.08);
+  font-family: inherit;
+}
+
+.big-mg-bottom h2 {
+  margin-bottom: 25px;
+  color: #000000;
+}
+
+.small-link {
+  display: inline-block;
+  font-size: 0.8rem;
+  color: #999;
+  position: relative;
+  z-index: 3;
+}
+
+.logout-text button {
+  font-family: inherit;
+  background-color: transparent;
+  border: none;
+  text-decoration: underline;
+  color: #a6a6a6;
 }
