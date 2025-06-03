@@ -344,4 +344,10 @@ body {
   border: none;
   text-decoration: underline;
   color: #a6a6a6;
+  font-size: 0.8rem;
+
+}
+
+.logout-btn:hover {
+  color: #434040;
 }
