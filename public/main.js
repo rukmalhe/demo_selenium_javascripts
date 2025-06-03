@@ -44,7 +44,7 @@ function handleButtonClick(evnt) {
   const currentFilter = evnt.target.dataset.filter;
   console.log(currentFilter);
   document.querySelectorAll(".client-detail").forEach(el => {
-    if (currentFilter == el.dataset.Business || All) {
+    if (currentFilter == el.dataset.Business || currentFilter == "All") {
       //set grid attribute to display
       el.style.display = "grid";
     } else {
