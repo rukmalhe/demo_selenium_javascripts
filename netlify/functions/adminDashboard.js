@@ -3,7 +3,7 @@ const cookie = require("cookie");
 const handler = async event => {
 
   const incomingCookie = cookie.parse(event.headers.cookie || "");
-  if (incomingCookie?.agency == "12345678901") {
+  if (incomingCookie?.jobagency == "1234567890") {
     return {
       statusCode: 200,
       headers: { "Content-Type": "application/json" },

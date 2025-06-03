@@ -6,9 +6,15 @@ const handler = async event => {
 
   if (body.username == "rukmal" && body.password == "password"
   ) {
+    const newCookie = cookie.serialize("jobagency", "1234567890", {
+      httpOnly: true,
+      path: "/",
+      sameSite: "strict",
+      maxAge: 60 * 60 * 24
+    })
     return {
       statusCode: 200,
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", "Set-Cookie": newCookie, "Location": "/" },
       body: JSON.stringify({ success: true })
     };
   }

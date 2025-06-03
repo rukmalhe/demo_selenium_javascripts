@@ -11,11 +11,13 @@ async function handleSubmite(evnt) {
     body: JSON.stringify({ username: document.querySelector("#userName").value, password: document.querySelector("#password").value })
   })
 
-  const ourData = await ourPromise.json();
+  const ourData = await ourPromise.json(); // this is respoonse body
+
   console.log(ourData);
+  //this is response 
+  if (ourPromise.status == 200) {
+    window.location = "/admin";
+  } else {
+    console.log("Try Again");
+  }
 }
-
-
-//over server side function for submission
-
-
