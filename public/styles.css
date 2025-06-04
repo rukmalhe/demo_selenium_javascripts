@@ -339,15 +339,101 @@ body {
 }
 
 .logout-text button {
+  vertical-align: middle;
   font-family: inherit;
   background-color: transparent;
   border: none;
   text-decoration: underline;
   color: #a6a6a6;
   font-size: 0.8rem;
+  padding: 13px 18px;
+  margin: 0 0 30px 0;
+  display: inline-block;
+  cursor: pointer;
+}
 
+.logout-text svg {
+  position: relative;
+  top: 4px;
+  margin-right: 12px;
 }
 
 .logout-btn:hover {
   color: #434040;
+}
+
+
+
+.action-items {
+  font-family: inherit;
+}
+
+.action-btn {
+
+  font-family: inherit;
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+  padding: 0 0 0 0;
+  margin: 10px 10px 0 0;
+  font-size: 0.9rem;
+  cursor: pointer;
+  color: blue;
+}
+
+.action-btn:last-child {
+  margin-right: 0;
+}
+
+.action-btn:hover {
+  color: rgb(7, 7, 83);
+  text-decoration: underline;
+}
+
+.add-vacancy-btn {
+  vertical-align: middle;
+  font-family: inherit;
+  color: white;
+  text-decoration: none;
+  background-color: rgb(42, 109, 42);
+  font-size: 1.2rem;
+  border-radius: 20px;
+  padding: 13px 18px;
+  margin: 0 0 30px 0;
+  display: inline-block;
+
+}
+
+
+
+.add-vacancy-btn:hover {
+  background-color: #0a5825;
+}
+
+.add-vacancy-btn svg {
+  position: relative;
+  top: 4px;
+  margin-right: 12px;
+}
+
+.loading-effect .client-description .hire-rate .client-image h3 {
+  opacity: 0;
+}
+
+.loading-effect .client-detail {
+  background-color: #9F9F9F;
+}
+
+@keyframes loadingFlash {
+  0% {
+    opacity: .1;
+  }
+
+  100% {
+    opacity: .4;
+  }
+}
+
+.loading-effect {
+  animation: 0.6s loadingFlash ease-in-out alternate infinite;
 }

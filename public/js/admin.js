@@ -3,7 +3,8 @@ async function start() {
   const ourData = await ourPromise.json();
   //console.log(ourData);
   if (ourData.success) {
-    console.log(ourData);
+    document.querySelector("#admin-render-clients").innerHTML = ourData.clients;
+
   } else {
     window.location = "/login";
   }
