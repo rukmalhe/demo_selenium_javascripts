@@ -1,11 +1,11 @@
 const { MongoClient } = require("mongodb");
+const isAdmin = require("../../utility/isAdmin");
 
 const cookie = require("cookie");
 
 const handler = async event => {
 
-  const incomingCookie = cookie.parse(event.headers.cookie || "");
-  if (incomingCookie?.jobagency == "1234567890") {
+  if (isAdmin(event)) {
 
     // db connection
     const client = new MongoClient(process.env.CONNECTIONSTRING); // Created an environment variable in 

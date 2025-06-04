@@ -325,6 +325,10 @@ body {
   font-family: inherit;
 }
 
+textarea .fork-field {
+  height: 250px;
+}
+
 .big-mg-bottom h2 {
   margin-bottom: 25px;
   color: #000000;
