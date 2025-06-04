@@ -1,6 +1,6 @@
 const { MongoClient } = require("mongodb");
 const isAdmin = require("../../utility/isAdmin");
-
+const dbconnection = require("../../utility/getMongoDBConnection");
 const cookie = require("cookie");
 
 const handler = async event => {
@@ -8,8 +8,7 @@ const handler = async event => {
   if (isAdmin(event)) {
 
     // db connection
-    const client = new MongoClient(process.env.CONNECTIONSTRING); // Created an environment variable in 
-    await client.connect();
+    const client = await dbconnection();
     const agencyClient = await client.db().collection("clients").find().toArray();
     client.close;
 

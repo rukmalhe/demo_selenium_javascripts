@@ -1,10 +1,11 @@
 const { MongoClient } = require("mongodb");
+const dbconnection = require("../../utility/getMongoDBConnection");
+
 
 const handler = async () => {
-  const client = new MongoClient(process.env.CONNECTIONSTRING); // Created an environment variable in Netlify Project
-
-  await client.connect();
-
+  //const client = new MongoClient(process.env.CONNECTIONSTRING); // Created an environment variable in Netlify 
+  // Project
+  const client = dbconnection();
   const agencyClient = await client.db().collection("clients").find().toArray();
   client.close;
 
