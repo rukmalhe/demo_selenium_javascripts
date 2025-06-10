@@ -1,7 +1,8 @@
 const { MongoClient } = require("mongodb");
+const escape = require("escape-html");
 const isAdmin = require("../../utility/isAdmin");
 const dbconnection = require("../../utility/getMongoDBConnection");
-const cookie = require("cookie");
+
 
 const handler = async event => {
 
@@ -35,11 +36,11 @@ function generateHTML(agencyClient) {
   ourHTML += agencyClient.map(agencyClient => {
     return `<div class="client-detail">
             <div class="client-text">
-              <h3>${agencyClient.Name}</h3>
-              <p class="client-description">${agencyClient.Description}</p>
+              <h3>${escape(agencyClient.Name)}</h3>
+              <p class="client-description">${escape(agencyClient.Description)}</p>
                 <div class="action-items">
-                  <a class="action-btn" href=#>Edit Vacancy</a>
-                  <button class="action-btn">Delete Vacancy</button>
+                  <a class="action-btn" href="/admin/editVacancy?id=${agencyClient._id}">Edit Vacancy</a>
+                  <button onClick="handleDelete('${agencyClient._id}', this)" class="action-btn">Delete Vacancy</button>
                 </div>
               </div>
             <div class="client-image">

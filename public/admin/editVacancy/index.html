@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@600&display=swap" rel="stylesheet">
 
-  <title>Manage Vacancies</title>
+  <title>Edit Existing Vacancy</title>
   <link rel="stylesheet" href="/styles.css">
 </head>
 
@@ -16,13 +16,12 @@
 
   <div class="page-section">
     <a class="small-link" href="/admin/">&laquo; Back to the Admin Page</a>
-    <h2 class="intro-feature big-mg-bottom blk-color">Add Vacancy</h2>
-    <form id="manage-vacancy-form">
-      <input autofocus autocomplete="false" class="form-field" type="text" id="CompanyName"
-        placeholder="The Company Name">
+    <h2 class="intro-feature big-mg-bottom blk-color">Update Vacancy Details</h2>
+    <form id="update-vacancy-form" class="form-animation">
+      <input autocomplete="false" class="form-field" type="text" id="CompanyName" placeholder="The Company Name">
       <textarea autocomplete="false" id="VacancyDescription" class="form-field"
         placeholder="Vacancy Details ......"></textarea>
-      <input autocomplete="false" class="form-field" type="text" id="PublishedDate"
+      <input autocomplete="false" class="form-field" type="text" id="publishedDate"
         placeholder="Published Date: (i.e. 12-Nove-25)">
       <select id="Business" class="form-field" default="none">
         <option> ---Please Select Type of Business--- </option>
@@ -34,7 +33,7 @@
       <input autocomplete="false" class="form-field" type="text" id="PayRate" placeholder="Pay Rate (i.e. $20 - $30)">
       <input autocomplete="false" class="form-field" type="text" id="ClosingDate"
         placeholder="Expiry Date: (i.e. 30-Nove-25)">
-      <button id="submit-btn" class="btn-1 save-vacancy-btn">Save</button>
+      <button id="submit-btn" class="form-field btn-1 save-vacancy-btn">Update</button>
     </form>
   </div> <!-- Page section -->
 
@@ -51,7 +50,7 @@
     </p>
     <p>© 2025 North West Facility Ltd. All rights reserved.</p>
   </footer>
-  <script src="/js/vacancyAdd.js"></script>
+  <script src="/js/vacancyEdit.js"></script>
   <script src="/js/logout.js"></script>
 </body>
 

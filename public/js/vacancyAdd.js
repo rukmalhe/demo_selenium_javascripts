@@ -8,13 +8,13 @@ document.querySelector("#manage-vacancy-form").addEventListener("submit",
     const vacancyDetails = {
       Name: document.querySelector("#CompanyName").value,
       Description: document.querySelector("#VacancyDescription").value,
-      CreatedDate: document.querySelector("#publishedDate").value,
+      CreatedDate: document.querySelector("#PublishedDate").value,
       Business: document.querySelector("#Business").value,
       PayRate: document.querySelector("#PayRate").value,
-      ExpiryDate: document.querySelector("#closingDate").value
+      ExpiryDate: document.querySelector("#ClosingDate").value
 
     };
-    console.log(vacancyDetails);
+    // console.log(vacancyDetails);
 
     const ourPromise = await fetch("/.netlify/functions/vacancy", {
       method: "POST",
@@ -22,12 +22,14 @@ document.querySelector("#manage-vacancy-form").addEventListener("submit",
       body: JSON.stringify(vacancyDetails)
     })
 
+    //adding form animation effect on saving
+    document.querySelector("#manage-vacancy-form").classList.add("form-animation");
     const ourData = await ourPromise.json(); // this is respoonse body
 
     console.log(ourData);
     //this is response 
     if (ourPromise.status == 201) {
-      window.location = "/admin/addVacancy";
+      window.location = "/admin/";
     } else {
       console.log("Error While Saving", ourData);
     }
