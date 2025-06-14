@@ -13,10 +13,16 @@ async function vacancies(params) {
     clone.querySelector(".client-description").textContent = clients.Description;
 
     clone.querySelector(".hire-rate").textContent = clients.PayRate;
-    if (!clients.CompanyLogo) {
-      clients.CompanyLogo = "images/Fallback.png";
+
+    const photo_id = clients.photo;
+
+    if (!clients.photo) {
+      clients.photo = "/images/Fallback.jpg";
+    } else {
+      clients.photo = `https://res.cloudinary.com/dnf2dypvu/image/upload/w_330,h_392,c_fill/${photo_id}.jpg`;
     }
-    clone.querySelector(".client-image img").src = clients.CompanyLogo;
+
+    clone.querySelector(".client-image img").src = clients.photo;
     clone.querySelector(".client-image img").alt = `The company logo ${clients.Name}`;
     wrapper.appendChild(clone);
   })

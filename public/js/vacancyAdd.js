@@ -14,7 +14,14 @@ document.querySelector("#manage-vacancy-form").addEventListener("submit",
       ExpiryDate: document.querySelector("#ClosingDate").value
 
     };
-    // console.log(vacancyDetails);
+
+    if (coudinaryReturnResponse) {
+      vacancyDetails.public_id = coudinaryReturnResponse.public_id;
+      vacancyDetails.version = coudinaryReturnResponse.version;
+      vacancyDetails.signature = coudinaryReturnResponse.signature;
+
+    }
+    console.log("this is vacancy Details: ", vacancyDetails);
 
     const ourPromise = await fetch("/.netlify/functions/vacancy", {
       method: "POST",
@@ -28,9 +35,11 @@ document.querySelector("#manage-vacancy-form").addEventListener("submit",
 
     console.log(ourData);
     //this is response 
+
     if (ourPromise.status == 201) {
       window.location = "/admin/";
     } else {
       console.log("Error While Saving", ourData);
     }
+
   })
