@@ -1,6 +1,7 @@
 let serverSignature;
 let serverTimeStamp;
 let coudinaryReturnResponse;
+let isFormSubmit = false;
 
 async function getSignature() {
   try {
@@ -25,6 +26,10 @@ document.querySelector("#add-vacancy-photo").addEventListener("change", async fu
   data.append("timestamp", serverTimeStamp);
 
   try {
+    //disabling form submission while uploading
+    isFormSubmit = false;
+    document.querySelector("#submit-btn").style.opacity = "0.1";
+
     //seding data to cloudinary, inbuild function in coudinary : axios.js
     const cloudinaryResponse = await axios.post("https://api.cloudinary.com/v1_1/dnf2dypvu/auto/upload", data, {
       headers: { "Content-Type": "multipart/form-data" },
@@ -35,6 +40,11 @@ document.querySelector("#add-vacancy-photo").addEventListener("change", async fu
       }
     });
     coudinaryReturnResponse = cloudinaryResponse.data;
+
+    //enabling the form submission button
+    isFormSubmit = true;
+    document.querySelector("#submit-btn").style.opacity = "1";
+
     console.log("VacancyPhoto: Cloudinary upload successful", cloudinaryResponse.data);
 
     //assign photo src into the html file

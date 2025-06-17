@@ -4,6 +4,12 @@ document.querySelector("#manage-vacancy-form").addEventListener("submit",
     //blocking client side java script when submission
     evnt.preventDefault();
 
+    //multiple click event block
+    if (isFormSubmit == false) {
+      return null;
+    }
+    isFormSubmit = false;
+
     //Form Values
     const vacancyDetails = {
       Name: document.querySelector("#CompanyName").value,
@@ -21,9 +27,9 @@ document.querySelector("#manage-vacancy-form").addEventListener("submit",
       vacancyDetails.signature = coudinaryReturnResponse.signature;
 
     }
-    console.log("this is vacancy Details: ", vacancyDetails);
+    //console.log("this is vacancy Details: ", vacancyDetails);
 
-    const ourPromise = await fetch("/.netlify/functions/vacancy", {
+    const ourPromise = await fetch("/.netlify/functions/addVacancy", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(vacancyDetails)
@@ -33,7 +39,7 @@ document.querySelector("#manage-vacancy-form").addEventListener("submit",
     document.querySelector("#manage-vacancy-form").classList.add("form-animation");
     const ourData = await ourPromise.json(); // this is respoonse body
 
-    console.log(ourData);
+    //console.log(ourData);
     //this is response 
 
     if (ourPromise.status == 201) {

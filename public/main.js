@@ -2,7 +2,7 @@ const template = document.querySelector("#client-template");
 const wrapper = document.createDocumentFragment(); // create a block of json objects in to one set of block
 
 async function vacancies(params) {
-  const vacancies = await fetch("/.netlify/functions/agency");
+  const vacancies = await fetch("/.netlify/functions/vacancy");
   const vacancyData = await vacancies.json()
   vacancyData.forEach(clients => { //anonymous function, can be called by parameter itself, without mentioning the function name or parenthisis
     const clone = template.content.cloneNode(true); //
