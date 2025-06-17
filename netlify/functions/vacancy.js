@@ -1,46 +1,19 @@
-const isAdmin = require("../../utility/isAdmin");
-const cleanUp = require("../../utility/cleanUp");
+const { MongoClient } = require("mongodb");
 const dbconnection = require("../../utility/getMongoDBConnection");
 
-const handler = async event => {
-  const body = JSON.parse(event.body);
 
-  //validate data
-  let validVacancyData = {
-    Name: cleanUp(body.Name),
-    Description: cleanUp(body.Description),
-    Business: cleanUp(body.Business),
-    CreatedDate: cleanUp(body.CreatedDate),
-    ExpiryDate: cleanUp(body.ExpiryDate),
-    PayRate: cleanUp(body.PayRate)
-  }
+const handler = async () => {
+  //const client = new MongoClient(process.env.CONNECTIONSTRING); // Created an environment variable in Netlify 
+  // Project
+  const client = await dbconnection();
+  const agencyClient = await client.db().collection("clients").find().toArray();
+  client.close;
 
-  //if (body.CreatedDate >999 && body.CreatedDate < 9999)
-  if (body.Business != "Finance" && body.Business != "Manufacturing" && body.Business != "Hospitality" && body.Business != "Office") {
-    validVacancyData.Business = "Other";
-  }
-
-  if (isAdmin(event)) {
-
-    // db connection
-    const client = await dbconnection();
-    await client.db().collection("clients").insertOne(validVacancyData);
-    client.close;
-
-    return {
-      statusCode: 201,
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ success: true })
-    };
-  } else {
-
-    return {
-      statusCode: 401,
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ success: false })
-    };
-  }
-
-}
+  return {
+    statusCode: 200,
+    headers: { "Content-Type": "application/json", "access-Control-Allow-Origin": "*" },
+    body: JSON.stringify(agencyClient)
+  };
+};
 
 module.exports = { handler };

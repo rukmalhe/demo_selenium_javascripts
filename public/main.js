@@ -2,7 +2,7 @@ const template = document.querySelector("#client-template");
 const wrapper = document.createDocumentFragment(); // create a block of json objects in to one set of block
 
 async function vacancies(params) {
-  const vacancies = await fetch("/.netlify/functions/agency");
+  const vacancies = await fetch("/.netlify/functions/vacancy");
   const vacancyData = await vacancies.json()
   vacancyData.forEach(clients => { //anonymous function, can be called by parameter itself, without mentioning the function name or parenthisis
     const clone = template.content.cloneNode(true); //
@@ -13,10 +13,16 @@ async function vacancies(params) {
     clone.querySelector(".client-description").textContent = clients.Description;
 
     clone.querySelector(".hire-rate").textContent = clients.PayRate;
-    if (!clients.CompanyLogo) {
-      clients.CompanyLogo = "images/Fallback.png";
+
+    const photo_id = clients.photo;
+
+    if (!clients.photo) {
+      clients.photo = "/images/Fallback.jpg";
+    } else {
+      clients.photo = `https://res.cloudinary.com/dnf2dypvu/image/upload/w_330,h_392,c_fill/${photo_id}.jpg`;
     }
-    clone.querySelector(".client-image img").src = clients.CompanyLogo;
+
+    clone.querySelector(".client-image img").src = clients.photo;
     clone.querySelector(".client-image img").alt = `The company logo ${clients.Name}`;
     wrapper.appendChild(clone);
   })

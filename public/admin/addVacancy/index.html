@@ -22,6 +22,8 @@
         placeholder="The Company Name">
       <textarea autocomplete="false" id="VacancyDescription" class="form-field"
         placeholder="Vacancy Details ......"></textarea>
+      <input type="file" class="form-field" id="add-vacancy-photo">
+      <div id="photo-preview"></div>
       <input autocomplete="false" class="form-field" type="text" id="PublishedDate"
         placeholder="Published Date: (i.e. 12-Nove-25)">
       <select id="Business" class="form-field" default="none">
@@ -51,7 +53,9 @@
     </p>
     <p>© 2025 North West Facility Ltd. All rights reserved.</p>
   </footer>
-  <script src="/js/vacancyAdd.js"></script>
+  <script src="/js/addVacancy.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="/js/vacancyPhoto.js"></script>
   <script src="/js/logout.js"></script>
 </body>
 
