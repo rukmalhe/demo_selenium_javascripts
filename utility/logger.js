@@ -1,26 +1,31 @@
 const { createLogger, transports, format } = require("winston");
 
+// Detect if running in serverless (e.g., Netlify)
+const isServerless = !!process.env.NETLIFY || !!process.env.AWS_LAMBDA_FUNCTION_NAME;
+
 const loggerTransports = [
   new transports.Console({
     format: format.simple()
   })
 ];
 
-// Only enable file logging in non-serverless environments
-const isNetlify = process.env.NETLIFY === "true";
-
-if (!isNetlify) {
+if (!isServerless) {
+  // Only require fs and add file logging in local/server environments
   const fs = require("fs");
   const path = "logs";
 
-  if (!fs.existsSync(path)) {
-    fs.mkdirSync(path);
-  }
+  try {
+    if (!fs.existsSync(path)) {
+      fs.mkdirSync(path);
+    }
 
-  loggerTransports.push(
-    new transports.File({ filename: "logs/error.log", level: "error" }),
-    new transports.File({ filename: "logs/combined.log" })
-  );
+    loggerTransports.push(
+      new transports.File({ filename: "logs/error.log", level: "error" }),
+      new transports.File({ filename: "logs/combined.log" })
+    );
+  } catch (err) {
+    console.warn("❗Logger: Failed to create log directory. Falling back to console only.", err.message);
+  }
 }
 
 const logger = createLogger({
