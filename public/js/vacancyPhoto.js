@@ -5,7 +5,7 @@ let isFormSubmit = false;
 
 async function getSignature() {
   try {
-    const signaturePromise = await fetch("/.netlify/functions/getSignature");
+    const signaturePromise = await fetch("/.netlify/functions/getSignature?context=admin");
     const theResponse = await signaturePromise.json();
     serverSignature = theResponse.signature;
     serverTimeStamp = theResponse.timestamp;

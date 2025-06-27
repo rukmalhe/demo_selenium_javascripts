@@ -129,7 +129,7 @@
         <template id="client-template">
           <div class="client-detail">
             <div class="client-text">
-              <h3></h3>
+              <h3>test</h3>
               <p class="client-description"></p>
               <p class="hire-rate">Pay Rate: $ 24.25 - $26.00</p>
             </div>
@@ -142,7 +142,130 @@
   <footer class="site-footer">
     <p>© 2025 North West Facility Ltd. All rights reserved. </p>
   </footer>
+  <!-- Form Overlay Section -->
+  <div class="form-overlay-outer" style="display:none">
+    <div class="form-overlay-inner">
+      <h1>Automation Engineer</h1>
+      <h3>Build solutions that deliver delightful user experiences to Data Migrations and Customer Support for our
+        industry-leading PMS</h3>
+      <form class="form-overlay" id="form-overlay-id">
+        <fieldset class="form-field">
+          <legend class="form-field-title">
+            Do you require visa sponsorship to work for the position you are applying for?
+          </legend>
+          <label class="radio-label">
+            <input type="radio" name="visa_sponsorship" value="yes" required />Yes
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="visa_sponsorship" value="no" />No
+          </label>
+        </fieldset>
+        <fieldset class="form-field">
+          <legend class="form-field-title">
+            What is your notice period?
+          </legend>
+          <label class="radio-label">
+            <input type="radio" name="notice_period" value="Immediate" required />
+            Immediate
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="notice_period" value="1 Week" />
+            1 Week
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="notice_period" value="2 Weeks" />
+            2 Weeks
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="notice_period" value="1 Month or more" />
+            1 Month or more
+          </label>
+        </fieldset>
+        <fieldset class="form-field">
+          <legend class="form-field-title">Earliest Start Date</legend>
+          <input type="date" name="start_date" class="date-input" placeholder="dd/mm/yyyy" required />
+        </fieldset>
+        <fieldset class="form-field">
+          <legend class="form-field-title">
+            Are you an existing {COMPANY_NAME} (Internal Applicant)
+          </legend>
+          <label class="radio-label">
+            <input type="radio" name="internal_candidate" value="yes" required />Yes
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="internal_candidate" value="no" />No
+          </label>
+        </fieldset>
+        <fieldset class="form-field">
+          <legend class="form-field-title">How do you like to be addressed?</legend>
+          <select name="salutation" id="salutation" required>
+            <option value="">-- Please select --</option>
+            <option value="Mr.">Mr.</option>
+            <option value="Ms.">Ms.</option>
+            <option value="Mrs.">Mrs.</option>
+            <option value="Mx.">Mx.</option>
+            <option value="Dr.">Dr.</option>
+            <option value="Prof.">Prof.</option>
+            <option value="Other">Other</option>
+          </select>
+        </fieldset>
+        <h2 class="form-section-title">Personal information</h2>
+        <fieldset class="form-field">
+          <div class="form-row">
+            <div class="form-col">
+              <label for="first_name">First name *</label>
+              <input type="text" id="first_name" name="first_name" required />
+            </div>
+            <div class="form-col">
+              <label for="last_name">Last name *</label>
+              <input type="text" id="last_name" name="last_name" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-col">
+              <label for="phone">Phone *</label>
+              <input type="tel" id="phone" name="phone" placeholder="+64 21 123 4567" required />
+            </div>
+          </div>
+
+          <div class="form-file-group">
+            <label for="cv_upload">Upload CV (PDF)*</label>
+            <input type="file" id="cv_upload" name="cv_upload" required accept="application/pdf" />
+          </div>
+          <div id="cv_upload_warning" class="file-warning">
+          </div>
+          <div class="form-file-group">
+            <label for="additional_files">Additional files (PDF)</label>
+            <input type="file" id="additional_files" name="additional_files" accept="application/pdf" />
+          </div>
+          <div id="additional_files_warning" class="file-warning"></div>
+        </fieldset>
+        <fieldset class="form-field">
+          <label class="checkbox-label">
+            <input type="checkbox" name="consent_privacy" required />
+            By submitting this application, I agree that I have read the
+            and confirm that {COMPANY NAME}
+            may store my personal details to process my job application.
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" name="consent_future_contact" id="consent_future_contact" />
+            Yes, {COMPANY NAME} One can contact me directly about specific future job opportunities.
+          </label>
+          <div class="form-submit-wrap">
+            <button type="submit" class="form-submit-button" id="app-form-submit-button">Submit application</button>
+          </div>
+        </fieldset>
+      </form>
+      <div class="form-overlay-close-btn">x</div>
+    </div>
+  </div>
   <script src="main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="/js/applicationFile.js"></script>
 </body>
 
 </html>
