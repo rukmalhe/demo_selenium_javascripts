@@ -22,7 +22,7 @@ async function vacancies(params) {
     svg.setAttribute("width", "50");
     svg.setAttribute("height", "50");
     svg.setAttribute("viewBox", "0 0 30 30");
-    svg.setAttribute("fill", "currentColor");
+    svg.setAttribute("fill", "rgb(18, 18, 193)");
     svg.setAttribute("class", "bi bi-envelope-check-fill");
 
     // Add a path to the SVG
@@ -106,13 +106,13 @@ function openOverlay(el) {
   const description = el.closest(".client-text").querySelector(".client-description").textContent;
   document.querySelector(".form-overlay-inner h1").textContent = h3;
   document.querySelector(".form-overlay-inner h3").textContent = description;
-  document.querySelector(".form-overlay-outer").classList.add("form-verlay--is-visibility");
+  document.querySelector(".form-overlay-outer").classList.add("form-overlay--is-visibility");
 }
 
 document.querySelector(".form-overlay-close-btn").addEventListener("click", closeOverlay);
 
 function closeOverlay() {
-  document.querySelector(".form-overlay-outer").classList.remove("form-verlay--is-visibility");
+  document.querySelector(".form-overlay-outer").classList.remove("form-overlay--is-visibility");
 }
 
 document.querySelector(".form-overlay-inner").addEventListener("submit", async function applicationSubmission(el) {
@@ -154,8 +154,18 @@ document.querySelector(".form-overlay-inner").addEventListener("submit", async f
     },
     body: JSON.stringify(applicantDetails)
   })
+
   if (ourPromise.status == 201) {
-    window.location = "/";
+    const thankYouEl = document.querySelector(".thank-you");
+    if (thankYouEl) {
+      thankYouEl.classList.add("thank-you--visible");
+      //document.querySelector(".form-overlay-outer").style.display = "none";
+      setTimeout(closeOverlay, 1500);
+      setTimeout(() => {
+        document.querySelector(".thank-you").classList.remove("thank-you--visible");
+      }, 1900);
+    }
+
   } else {
     console.log("Error While Saving", ourPromise);
   }
