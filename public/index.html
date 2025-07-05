@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@600&display=swap" rel="stylesheet">
 
-  <title>Our cool Title</title>
+  <title>North West Recruitment Service</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -16,11 +16,12 @@
   <div class="top-section-wrapper">
     <div class="top-content-position">
       <div class="top-section">
-        <h1>Find A Job</h1>
+        <h1>Welcome ! North West Recruitment</h1>
         <p class="sub-title">Your Gateway to Professional Success.</p>
         <div class="intro-button">
           <a href="#view-jobs" class="btn-1 utitlity-right">Search Jobs</a>
-          <a href="admin/" class="btn-1 btn-1--outline">Register for an Opportunity</a>
+          <button class="btn-1 btn-1--outline" id="candidate-registration">Register for an Opportunity</button>
+          <a href="admin/" class="btn-1 btn-1--outline">Login</a>
         </div>
         <div class="intro-blk-section">
           <div class="intro-feature">
@@ -89,9 +90,9 @@
         <template id="client-template">
           <div class="client-detail">
             <div class="client-text">
-              <h3>test</h3>
+              <h3></h3>
               <p class="client-description"></p>
-              <p class="hire-rate">Pay Rate: $ 24.25 - $26.00</p>
+              <p class="hire-rate"></p>
             </div>
             <div class="client-image"><img src="/images/hello-Fresh-logo.jpg" alt="warehoiuse staff"> </div>
           </div> <!-- end of client details-->
@@ -102,7 +103,7 @@
   <footer class="site-footer">
     <p>© 2025 North West Facility Ltd. All rights reserved. </p>
   </footer>
-  <!-- Form Overlay Section -->
+  <!-- Vacancy application Form Overlay Section -->
   <div class="form-overlay-outer" style="display:none">
     <div class="form-overlay-inner">
       <h1>Automation Engineer</h1>
@@ -220,7 +221,6 @@
           </div>
         </fieldset>
       </form>
-
       <div class="form-overlay-close-btn">x</div>
       <div class="thank-you">
         <p><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
@@ -231,7 +231,77 @@
       </div>
     </div>
   </div>
+  <!-- General Registration Form Overlay -->
+  <div class="form-overlay-outer" id="general-register-overlay" style="display:none">
+    <div class="form-overlay-inner">
+      <h1>Register for Future Opportunities</h1>
+      <h3>Share your details with us and we’ll contact you when a suitable role arises.</h3>
+      <form class="form-overlay" id="general-register-form">
+        <fieldset class="form-field">
+          <legend class="form-field-title">Your Details</legend>
+          <div class="form-row">
+            <div class="form-col">
+              <label for="reg_first_name">First name *</label>
+              <input type="text" id="reg_first_name" name="first_name" required />
+            </div>
+            <div class="form-col">
+              <label for="reg_last_name">Last name *</label>
+              <input type="text" id="reg_last_name" name="last_name" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col">
+              <label for="reg_email">Email *</label>
+              <input type="email" id="reg_email" name="email" required />
+            </div>
+            <div class="form-col">
+              <label for="reg_phone">Phone *</label>
+              <input type="tel" id="reg_phone" name="phone" placeholder="+64 21 123 4567" required />
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="form-field">
+          <legend class="form-field-title">Your Interests</legend>
+          <label for="preferred_role">Preferred Role or Department</label>
+          <input type="text" id="preferred_role" name="preferred_role" placeholder="e.g., Office Admin, Hospitality" />
+
+          <label for="availability">Availability</label>
+          <input type="text" id="availability" name="availability" placeholder="e.g., Immediate, 2 weeks notice" />
+        </fieldset>
+
+        <fieldset class="form-field">
+          <div class="form-file-group">
+            <label for="reg_cv_upload">Upload Your CV (PDF)*</label>
+            <input type="file" id="reg_cv_upload" name="cv_upload" required accept="application/pdf" />
+          </div>
+          <div id="reg_cv_upload_warning" class="file-warning"></div>
+        </fieldset>
+        <fieldset class="form-field">
+          <label class="checkbox-label-gen">
+            <input type="checkbox" class="checkbox-label-gen" name="reg_consent_privacy" required />
+            I agree that my personal data may be stored for future job opportunities.
+          </label>
+          <div class="form-submit-wrap">
+            <button type="submit" class="form-submit-button" id="general-form-submit-button">Register</button>
+          </div>
+        </fieldset>
+      </form>
+      <div class="form-overlay-close-btn">x</div>
+      <div class="thank-you" id="general-thank-you">
+        <p>
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+            class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+            <path
+              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+          </svg> Thank you for registering. We'll be in touch!
+        </p>
+      </div>
+    </div>
+  </div>
+
   <script src="main.js"></script>
+  <script src="/js/candidateRegistration.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="/js/applicationFile.js"></script>
 </body>
