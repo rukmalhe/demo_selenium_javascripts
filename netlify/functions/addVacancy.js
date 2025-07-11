@@ -8,7 +8,7 @@ const dbconnection = require("../../utility/getMongoDBConnection");
 const handler = async event => {
   try {
     const body = JSON.parse(event.body);
-    logger.info("Vacancy: 📥 Received vacancy submission");
+    logger.info("Add Vacancy: 📥 Received vacancy submission");
 
     //validate data
     let validVacancyData = {

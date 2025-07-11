@@ -1,48 +1,55 @@
-document.querySelector("#candidate-registration").addEventListener("click", openOverlay);
+//overlay form
+const overlayForRegistration = document.querySelector(".form-overlay-outer-2");
 
-document.querySelector("#general-register-form").addEventListener("submit",
-  async function Submit(evnt) {
+
+
+//open form
+function openOverlayForRegistration(el) {
+  console.log("Clicked Register button");
+
+  // before calling the openOVerlay method, you have to set the form display property to null.
+  document.querySelector(".form-overlay-outer-2").style.display = "";
+  if (overlayForRegistration) { overlayForRegistration.classList.add("form-overlay--is-visibility-2"); }
+  else {
+    console.error("Overlay element not found");
   }
-
-)
-function openOverlay(el) {
-  document.querySelector(".form-overlay-outer").classList.add("form-overlay--is-visibility");
 }
 
-document.querySelector(".form-overlay-close-btn").addEventListener("click", closeOverlay);
+document.getElementById('candidate-registration').addEventListener('click', openOverlayForRegistration);
 
-function closeOverlay() {
-  document.querySelector(".form-overlay-outer").classList.remove("form-overlay--is-visibility");
+function closeOverlayofRegistration() {
+  overlayForRegistration.classList.remove("form-overlay--is-visibility-2");
 }
+document.getElementById('form-overlay-close-btn-2').addEventListener("click", closeOverlayofRegistration);
 
-document.querySelector(".form-overlay-inner").addEventListener("submit", async function applicationSubmission(el) {
+
+document.getElementById("general-register-form").addEventListener("submit", async function registration(el) {
   el.preventDefault();
-  const form = document.querySelector(".form-overlay");
+
+  const registrationForm = document.getElementById("general-register-form");
 
   const applicantDetails = {
-    VisaStatus: form.querySelector("input[name='visa_sponsorship']:checked").value,
-    NoticePeriod: form.querySelector("input[name='notice_period']:checked").value,
-    StartDate: form.querySelector("input[name='start_date']").value,
-    InternalCandidate: form.querySelector("input[name='internal_candidate']:checked").value,
-    Salutation: form.querySelector("select[name='salutation']").value,
-    FirstName: form.querySelector("input[name='first_name']").value,
-    LastName: form.querySelector("input[name='last_name']").value,
-    Email: form.querySelector("input[name='email']").value,
-    Phone: form.querySelector("input[name='phone']").value,
-    FutureContact: form.querySelector("input[name='consent_future_contact']:checked").value
+
+    FirstName: registrationForm.querySelector("input[id='reg_first_name']").value,
+    LastName: registrationForm.querySelector("input[name='last_name']").value,
+    Email: registrationForm.querySelector("input[name='email']").value,
+    Phone: registrationForm.querySelector("input[name='phone']").value,
+    Preference: registrationForm.querySelector("input[name='preferred_role']").value,
+    FutureContact: registrationForm.querySelector("input[name='reg_consent_privacy']:checked").value
+
   }
-  if (cvUploadResponse) {
+
+  if (typeof cvUploadResponse !== "undefined" && cvUploadResponse) {
     applicantDetails.cv_public_id = cvUploadResponse.public_id;
     applicantDetails.cv_version = cvUploadResponse.version;
     applicantDetails.cv_signature = cvUploadResponse.signature;
 
   }
-
   console.log(applicantDetails);
 
-  document.querySelector("#form-overlay-id").classList.add("form-animation");
+  document.getElementById("general-register-form").classList.add("form-animation");
 
-  const ourPromise = await fetch("/.netlify/functions/addApplications", {
+  const ourPromise = await fetch("/.netlify/functions/candidateRegistration", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -51,17 +58,19 @@ document.querySelector(".form-overlay-inner").addEventListener("submit", async f
   })
 
   if (ourPromise.status == 201) {
-    const thankYouEl = document.querySelector(".thank-you");
+    const thankYouEl = document.getElementById("general-thank-you");
     if (thankYouEl) {
-      thankYouEl.classList.add("thank-you--visible");
-      //document.querySelector(".form-overlay-outer").style.display = "none";
+      thankYouEl.classList.add("thank-you--visible-2");
+      document.querySelector(".form-overlay-outer-2").style.display = "none";
       setTimeout(closeOverlay, 1500);
       setTimeout(() => {
-        document.querySelector(".thank-you").classList.remove("thank-you--visible");
+        document.getElementById("general-thank-you").classList.remove("thank-you--visible");
       }, 1900);
     }
 
   } else {
     console.log("Error While Saving", ourPromise);
   }
-})
+}
+
+)

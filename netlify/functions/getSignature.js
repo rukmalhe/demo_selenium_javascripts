@@ -14,12 +14,12 @@ const handler = async event => {
       event.headers["x-real-ip"] ||
       "unknown";
 
-    logger.info(`📥 Received getSignature (context: ${context})`);
-    logger.info(`📍 Applicant IP: ${ip}`);
+    logger.info(`GetSignature: 📥 Received getSignature (context: ${context})`);
+    logger.info(`GetSignature: 📍 Applicant IP: ${ip}`);
 
     if (context == 'admin') {
       if (!isAdmin(event)) {
-        logger.warn("🔐 Unauthorized attempt to upload vacancy images");
+        logger.warn("GetSignature: 🔐 Unauthorized attempt to upload vacancy images");
         return {
           statusCode: 401,
           headers: { "Content-Type": "application/json" },
@@ -28,7 +28,7 @@ const handler = async event => {
       }
 
       const signature = cloudinary.utils.api_sign_request({ timestamp }, process.env.CLOUDINARYSECRETS);
-      logger.info("📥 Admin: getSignature received successfully");
+      logger.info("GetSignature: 📥 Admin: getSignature received successfully");
       return {
         statusCode: 200,
         headers: { "Content-Type": "application/json" },
@@ -38,7 +38,7 @@ const handler = async event => {
     } if (context == "cv") {
       const signature = cloudinary.utils.api_sign_request({ timestamp, folder: "cv_uploads" }, process.env.CLOUDINARYSECRETS);
 
-      logger.info("✅ Applicant CV signature generated");
+      logger.info("GetSignature: ✅ Applicant CV signature generated");
 
       return {
         statusCode: 200,
@@ -47,7 +47,7 @@ const handler = async event => {
       }
     }
     // Invalid context fallback
-    logger.warn(`⚠️ Unrecognized context: ${context}`);
+    logger.warn(`GetSignature: ⚠️ Unrecognized context: ${context}`);
     return {
       statusCode: 400,
       headers: { "Content-Type": "application/json" },
@@ -55,7 +55,7 @@ const handler = async event => {
     };
 
   } catch (err) {
-    logger.error("❌ Error in vacancy handler: " + err.message);
+    logger.error("GetSignature: ❌ Error in vacancy handler: " + err.message);
     return {
       statusCode: 500,
       headers: { "Content-Type": "application/json" },

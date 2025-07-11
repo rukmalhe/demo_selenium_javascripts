@@ -76,9 +76,18 @@ async function filesUploadToCloudinary(fileInputID, fileLabel) {
 // handling CV upload
 document.querySelector("#cv_upload").addEventListener("change", async () => {
   cvUploadResponse = await filesUploadToCloudinary("cv_upload", "CV");
+  console.log("CV uploaded");
 });
+
+// handling candiate registration
+document.querySelector("#reg_cv_upload").addEventListener("change", async () => {
+  cvUploadResponse = await filesUploadToCloudinary("reg_cv_upload", "CV");
+  console.log("CV registration completed")
+});
+
 
 //handling other files
 document.querySelector("#additional_files").addEventListener("change", async () => {
   coverLetterResponse = await filesUploadToCloudinary("additional_files", "Cover Letter");
+  console.log("Cover letter uploaded")
 });

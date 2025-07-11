@@ -104,7 +104,7 @@
     <p>© 2025 North West Facility Ltd. All rights reserved. </p>
   </footer>
   <!-- Vacancy application Form Overlay Section -->
-  <div class="form-overlay-outer" style="display:none">
+  <div class="form-overlay-outer-1">
     <div class="form-overlay-inner">
       <h1>Automation Engineer</h1>
       <h3>Build solutions that deliver delightful user experiences to Data Migrations and Customer Support for our
@@ -232,7 +232,7 @@
     </div>
   </div>
   <!-- General Registration Form Overlay -->
-  <div class="form-overlay-outer" id="general-register-overlay" style="display:none">
+  <div class="form-overlay-outer-2">
     <div class="form-overlay-inner">
       <h1>Register for Future Opportunities</h1>
       <h3>Share your details with us and we’ll contact you when a suitable role arises.</h3>
@@ -260,35 +260,34 @@
             </div>
           </div>
         </fieldset>
-
         <fieldset class="form-field">
-          <legend class="form-field-title">Your Interests</legend>
           <label for="preferred_role">Preferred Role or Department</label>
           <input type="text" id="preferred_role" name="preferred_role" placeholder="e.g., Office Admin, Hospitality" />
-
+        </fieldset>
+        <fieldset class="form-field">
           <label for="availability">Availability</label>
           <input type="text" id="availability" name="availability" placeholder="e.g., Immediate, 2 weeks notice" />
         </fieldset>
-
         <fieldset class="form-field">
           <div class="form-file-group">
             <label for="reg_cv_upload">Upload Your CV (PDF)*</label>
-            <input type="file" id="reg_cv_upload" name="cv_upload" required accept="application/pdf" />
+            <!-- id="cv_upload" name="cv_upload" -->
+            <input type="file" id="reg_cv_upload" name="reg_cv_upload" required accept="application/pdf" />
           </div>
           <div id="reg_cv_upload_warning" class="file-warning"></div>
         </fieldset>
         <fieldset class="form-field">
           <label class="checkbox-label-gen">
-            <input type="checkbox" class="checkbox-label-gen" name="reg_consent_privacy" required />
-            I agree that my personal data may be stored for future job opportunities.
+            <input type="checkbox" name="reg_consent_privacy" required />
+            I agree that my personal data may be stored for future job opportunities. *
           </label>
           <div class="form-submit-wrap">
-            <button type="submit" class="form-submit-button" id="general-form-submit-button">Register</button>
+            <button type="submit" class="form-submit-button" id="form-submit-button-2">Register</button>
           </div>
         </fieldset>
       </form>
-      <div class="form-overlay-close-btn">x</div>
-      <div class="thank-you" id="general-thank-you">
+      <div class="form-overlay-close-btn" id="form-overlay-close-btn-2">x</div>
+      <div class="thank-you thank-you--visible" id="general-thank-you">
         <p>
           <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
             class="bi bi-check-circle-fill" viewBox="0 0 16 16">
@@ -301,8 +300,8 @@
   </div>
 
   <script src="main.js"></script>
-  <script src="/js/candidateRegistration.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="/js/candidateRegistration.js"></script>
   <script src="/js/applicationFile.js"></script>
 </body>
 

@@ -97,7 +97,7 @@ function handleButtonClick(evnt) {
 }
 
 // before calling the openOVerlay method, you have to set the form display property to null.
-document.querySelector(".form-overlay-outer").style.display = "";
+document.querySelector(".form-overlay-outer-1").style.display = "";
 
 function openOverlay(el) {
   //looking up the DOM tree : closest funtion
@@ -106,13 +106,13 @@ function openOverlay(el) {
   const description = el.closest(".client-text").querySelector(".client-description").textContent;
   document.querySelector(".form-overlay-inner h1").textContent = h3;
   document.querySelector(".form-overlay-inner h3").textContent = description;
-  document.querySelector(".form-overlay-outer").classList.add("form-overlay--is-visibility");
+  document.querySelector(".form-overlay-outer-1").classList.add("form-overlay--is-visibility");
 }
 
 document.querySelector(".form-overlay-close-btn").addEventListener("click", closeOverlay);
 
 function closeOverlay() {
-  document.querySelector(".form-overlay-outer").classList.remove("form-overlay--is-visibility");
+  document.querySelector(".form-overlay-outer-1").classList.remove("form-overlay--is-visibility");
 }
 
 document.querySelector(".form-overlay-inner").addEventListener("submit", async function applicationSubmission(el) {
@@ -154,6 +154,9 @@ document.querySelector(".form-overlay-inner").addEventListener("submit", async f
     },
     body: JSON.stringify(applicantDetails)
   })
+
+  //adding form animation effect on saving
+  document.querySelector("#manage-vacancy-form").classList.add("form-animation");
 
   if (ourPromise.status == 201) {
     const thankYouEl = document.querySelector(".thank-you");
