@@ -23,7 +23,7 @@ getSignature();
 async function filesUploadToCloudinary(fileInputID, fileLabel, submitButtonID) {
   const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2 MB
   const fileInput = document.querySelector(`#${fileInputID}`);
-  const warningElement = document.querySelector(`#${fileInputID}_warning`);
+  const warningElement = document.querySelector(`#${fileInputID}-warning`);
   const submissionButton = document.querySelector(`#${submitButtonID}`);
 
   console.log(warningElement);
