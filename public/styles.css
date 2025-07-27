@@ -330,6 +330,13 @@ textarea .form-field {
   height: 250px;
 }
 
+.form-label {
+  font-size: 0.95rem;
+  color: #333;
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+}
+
 .form__field input[type="text"],
 .form__field input[type="email"],
 .form__field input[type="tel"],

@@ -15,10 +15,10 @@ async function editVacancyDetails() {
     if (ourPromise.status == 200) {
       document.querySelector("#CompanyName").value = result.vacancyDetail.Name;
       document.querySelector("#VacancyDescription").value = result.vacancyDetail.Description;
-      document.querySelector("#publishedDate").value = result.vacancyDetail.CreatedDate;
+      document.querySelector("#published-date-vacancy").value = result.vacancyDetail.CreatedDate;
       document.querySelector("#Business").value = result.vacancyDetail.Business;
       document.querySelector("#PayRate").value = result.vacancyDetail.PayRate;
-      document.querySelector("#ClosingDate").value = result.vacancyDetail.ExpiryDate;
+      document.querySelector("#expiry-date-vacancy").value = result.vacancyDetail.ExpiryDate;
       document.querySelector("#update-vacancy-form").classList.remove("form-animation");
 
       if (result.vacancyDetail.photo) {
@@ -57,10 +57,10 @@ document.querySelector("#update-vacancy-form").addEventListener("submit",
       id: vacancyId,
       Name: document.querySelector("#CompanyName").value,
       Description: document.querySelector("#VacancyDescription").value,
-      CreatedDate: document.querySelector("#publishedDate").value,
+      CreatedDate: document.querySelector("#published-date-vacancy").value,
       Business: document.querySelector("#Business").value,
       PayRate: document.querySelector("#PayRate").value,
-      ExpiryDate: document.querySelector("#ClosingDate").value,
+      ExpiryDate: document.querySelector("#expiry-date-vacancy").value,
 
     };
     // when photo is changed, we add new attributes to the vacancy Details page

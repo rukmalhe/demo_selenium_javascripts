@@ -14,10 +14,10 @@ document.querySelector("#manage-vacancy-form").addEventListener("submit",
     const vacancyDetails = {
       Name: document.querySelector("#CompanyName").value,
       Description: document.querySelector("#VacancyDescription").value,
-      CreatedDate: document.querySelector("#PublishedDate").value,
+      CreatedDate: document.querySelector("#published-date-vacancy").value,
       Business: document.querySelector("#Business").value,
       PayRate: document.querySelector("#PayRate").value,
-      ExpiryDate: document.querySelector("#ClosingDate").value
+      ExpiryDate: document.querySelector("#expiry-date-vacancy").value
 
     };
 

@@ -23,8 +23,11 @@
         placeholder="Vacancy Details ......"></textarea>
       <input type="file" class="form-field" id="add-vacancy-photo">
       <div id="photo-preview"></div>
-      <input autocomplete="false" class="form-field" type="text" id="publishedDate"
-        placeholder="Published Date: (i.e. 12-Nove-25)">
+
+      <div class="form-field">
+        <label for="published-date-vacancy" class="form-label">Published Date: (e.g., 12-Nov-25)</label>
+        <input type="date" id="published-date-vacancy" name="published-date-vacancy" class="form-input" required />
+      </div>
       <select id="Business" class="form-field" default="none">
         <option> ---Please Select Type of Business--- </option>
         <option>Finance</option>
@@ -33,8 +36,10 @@
         <option>Office</option>
       </select>
       <input autocomplete="false" class="form-field" type="text" id="PayRate" placeholder="Pay Rate (i.e. $20 - $30)">
-      <input autocomplete="false" class="form-field" type="text" id="ClosingDate"
-        placeholder="Expiry Date: (i.e. 30-Nove-25)">
+      <div class="form-field">
+        <label for="expiry-date-vacancy" class="form-label">Expiry Date: (i.e. 30-Nove-25)</label>
+        <input type="date" id="expiry-date-vacancy" name="expiry-date-vacancy" class="form-input" required />
+      </div>
       <button id="submit-btn" class="form-field btn-1 save-vacancy-btn">Update</button>
     </form>
   </div> <!-- Page section -->
