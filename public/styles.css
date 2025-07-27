@@ -314,6 +314,7 @@ body {
 }
 
 /*Admin page*/
+.form__field,
 .form-field {
   display: block;
   width: 90%;
@@ -329,14 +330,19 @@ textarea .form-field {
   height: 250px;
 }
 
-/* Input elements */
-.form-field input[type="text"],
-.form-field input[type="email"],
-.form-field input[type="tel"],
-.form-field input[type="number"],
-.form-field input[type="password"],
-.form-field select,
-.form-field textarea {
+.form__field input[type="text"],
+.form__field input[type="email"],
+.form__field input[type="tel"],
+.form__field input[type="number"],
+.form__field input[type="password"],
+.form__field textarea,
+.form_field input[type="text"],
+.form_field input[type="email"],
+.form_field input[type="tel"],
+.form_field input[type="number"],
+.form_field input[type="password"],
+.form_field select,
+.form_field textarea {
   width: 100%;
   padding: 0.75rem;
   border-radius: 4px;
@@ -345,21 +351,37 @@ textarea .form-field {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.form__field select {
+  width: 50%;
+  padding: 0.85rem;
+  border-radius: 4px;
+  border: none;
+  font-size: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 /* Radio & Checkbox inline options */
 .form-field .radio-group,
-.form-field .checkbox-group {
+.form__field .form__radio-group,
+.form-field .checkbox-group,
+.form__field .form__checkbox-group {
   display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
+  gap: 0.5rem;
+  /* flex-wrap: wrap; */
+  flex-direction: column;
 }
 
 .form-field input[type="radio"],
-.form-field input[type="checkbox"] {
+.form__field input[type="radio"],
+.form-field input[type="checkbox"],
+.form__field input[type="checkbox"] {
   margin-right: 0.5rem;
 }
 
-.form-field label.radio-label,
-.form-field label.checkbox-label {
+.form-field .radio-label,
+.form__field .form__radio-label,
+.form-field .checkbox-label,
+.form__field .form__checkbox-label {
   display: flex;
   align-items: center;
   font-size: 1rem;
@@ -392,20 +414,23 @@ textarea .form-field {
   background-color: #e5e5e5;
 }
 
-.form-row {
+.form-row,
+.form__row {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
   margin-bottom: 1rem;
 }
 
-.form-col {
+.form-col,
+.form__col {
   flex: 1 1 48%;
   display: flex;
   flex-direction: column;
 }
 
-.form-col input {
+.form-col input,
+.form__col input {
 
   width: 100%;
   padding: 0.75rem;
@@ -415,11 +440,13 @@ textarea .form-field {
   box-sizing: border-box;
 }
 
-.form-file-group {
+.form-file-group,
+.form__file--group {
   margin-top: 1.5rem;
 }
 
-.form-file-group input[type="file"] {
+.form-file-group input[type="file"],
+.form__file--group input[type="file"] {
   padding: 0.75rem;
   background-color: #f9f9f9;
   border-radius: 8px;
@@ -429,7 +456,8 @@ textarea .form-field {
   color: #333;
 }
 
-.form-section-title {
+.form-section-title,
+.form__section--title {
   font-size: 1.5rem;
   font-weight: 600;
   text-align: center;
@@ -475,8 +503,6 @@ textarea .form-field {
 .logout-btn:hover {
   color: #434040;
 }
-
-
 
 .action-items {
   font-family: inherit;
@@ -569,8 +595,8 @@ textarea .form-field {
   animation: 0.6s loadingFlash ease-in-out alternate infinite;
 }
 
-.form-overlay-outer-1,
-.form-overlay-outer-2 {
+.overlay,
+.form-overlay-outer-1 {
   position: fixed;
   background-color: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(5px);
@@ -593,6 +619,14 @@ textarea .form-field {
   transition: all 0.33s ease-out;
 }
 
+.form-overlay-outer-2 {
+  visibility: hidden;
+  opacity: 0;
+  transform: scale(1.2);
+  transition: all 0.33s ease-out;
+}
+
+.form__overlay--is-visibility,
 .form-overlay--is-visibility,
 .form-overlay--is-visibility-2 {
   visibility: visible;
@@ -602,6 +636,7 @@ textarea .form-field {
 }
 
 
+.overlay__inner,
 .form-overlay-inner {
   position: relative;
   background-color: #0d4e96;
@@ -620,7 +655,24 @@ textarea .form-field {
 
 }
 
-.thank-you,
+.overlay--vacancy__close-btn {
+  position: absolute;
+  top: 0px;
+  right: 20px;
+  color: rgba(0, 0, 0, 0.41);
+  font-size: 2.25rem;
+  transform: scaleX(1.2);
+  /* strech horizontally only*/
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.overlay--vacancy__close-btn:hover {
+  opacity: 1;
+}
+
+
+.overlay--vacancy__thank-you,
 .thank-you-2 {
   visibility: hidden;
   opacity: 0;
@@ -641,13 +693,13 @@ textarea .form-field {
   transition: all .3s ease-out;
 }
 
-.thank-you,
+.overlay--vacancy__thank-you p,
 .thank-you-2 p {
   align-self: center;
   font-size: 1.2rem;
 }
 
-.thank-you,
+.overlay--vacancy__thank-you svg,
 .thank-you-2,
 svg {
   color: rgb(31, 179, 31);
@@ -678,6 +730,7 @@ svg {
   opacity: 1;
 }
 
+.overlay__title,
 .form-overlay-inner h1 {
   font-size: 2.5rem;
   font-weight: 700;
@@ -685,6 +738,7 @@ svg {
   text-align: center;
 }
 
+.overlay__subtitle,
 .form-overlay-inner h3 {
   font-size: 1.5rem;
   font-weight: 700;
@@ -699,14 +753,25 @@ fieldset {
   padding: 0;
 }
 
-legend.form-field-title {
+legend.form-field-title,
+legend.form__legend {
   font-size: 1rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
   display: block;
 }
 
-.date-input {
+.form__input {
+  padding: 0.75rem;
+  border-radius: 4px;
+  border: none;
+  font-size: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.date-input,
+.form__input--date,
+.form__input--vacancy-date {
   width: 25%;
   padding: 0.75rem 1rem;
   border-radius: 8px;
@@ -724,7 +789,7 @@ legend.form-field-title {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.checkbox-label {
+/* .checkbox-label {
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
@@ -732,6 +797,7 @@ legend.form-field-title {
   font-size: 1rem;
   line-height: 1.5;
 }
+*/
 
 .checkbox-label {
   display: flex;
@@ -767,13 +833,15 @@ input[type="checkbox"]:checked::after {
 }
 
 
-.form-submit-wrap {
+.form-submit-wrap,
+.form__submit-wrap {
   display: flex;
   justify-content: center;
   margin-top: 2rem;
 }
 
-.form-submit-button {
+.form-submit-button,
+.form__submit-button-vacancy {
   background-color: #ffffff;
   color: #0d4e96;
   font-weight: 600;
@@ -806,7 +874,8 @@ input[type="checkbox"]:checked::after {
   opacity: 1;
 }
 
-.file-warning {
+.file-warning,
+.form__file--warning {
   color: rgb(213, 82, 82);
   font-size: 0.9em;
   margin-top: 4px;
@@ -828,7 +897,7 @@ input[type="checkbox"]:checked::after {
   align-items: center;
   overflow: auto;
   padding: 1rem;
-  visibility: visible;
+  visibility: hidden;
   opacity: 1;
   transform: scale(1);
   transition: all 0.33s ease-out;

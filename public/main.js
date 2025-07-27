@@ -1,3 +1,18 @@
+/*
+#################################
+The main JavaScript file for the Job Agency Service
+created by Rukmal
+Which is handling display of vacancies, filtering, and application submission.
+##################################
+*/
+
+/*
+#################################
+This file is part of the Job Agency Service project.
+It is responsible for fetching and displaying job vacancies,
+It uses the Fetch API to retrieve data from a serverless function.
+###################################
+*/
 const template = document.querySelector("#client-template");
 const wrapper = document.createDocumentFragment(); // create a block of json objects in to one set of block
 
@@ -67,6 +82,13 @@ async function vacancies(params) {
 
 vacancies();
 
+/*
+#################################
+this file is part of the Job Agency Service project.
+It is responsible for filtering the job vacancies based on the button clicked.
+It uses the DOM manipulation to add and remove classes for active buttons.
+##################################
+*/
 //button filter code
 const AllButtons = document.querySelectorAll(".client-filter button");
 //add Event Listner catches the events
@@ -96,41 +118,84 @@ function handleButtonClick(evnt) {
 
 }
 
-// before calling the openOVerlay method, you have to set the form display property to null.
-document.querySelector(".form-overlay-outer-1").style.display = "";
+/*
+#################################
+This file is part of the Job Agency Service project.
+It is responsible for handling the overlay functionality for job applications.
+It allows users to open and close the application overlay, and submit their applications.
+##################################
+*/
+// before calling the openOverlay method, you have to set the form display property to null.
+document.querySelector(".overlay--vacancy").style.display = "";
 
 function openOverlay(el) {
+  console.log("open overlay called");
   //looking up the DOM tree : closest funtion
   const h3 = el.closest("h3").textContent;
   //loking up the DOM tree and then querySelector of the div element
   const description = el.closest(".client-text").querySelector(".client-description").textContent;
-  document.querySelector(".form-overlay-inner h1").textContent = h3;
-  document.querySelector(".form-overlay-inner h3").textContent = description;
-  document.querySelector(".form-overlay-outer-1").classList.add("form-overlay--is-visibility");
+  document.querySelector(".overlay__inner h1").textContent = h3;
+  document.querySelector(".overlay__inner h3").textContent = description;
+  document.querySelector(".overlay--vacancy").classList.add("form__overlay--is-visibility");
 }
 
-document.querySelector(".form-overlay-close-btn").addEventListener("click", closeOverlay);
+document.querySelector(".overlay--vacancy__close-btn").addEventListener("click", closeOverlay);
 
 function closeOverlay() {
-  document.querySelector(".form-overlay-outer-1").classList.remove("form-overlay--is-visibility");
+  document.querySelector(".overlay--vacancy").classList.remove("form__overlay--is-visibility");
+
+  // Reset form fields
+  form.reset();
+
+  // Reset file inputs (manual, since form.reset() might not clear them visually)
+  document.getElementById("cv-upload-id").value = "";
+  document.getElementById("additional-files-vacancy-id").value = "";
+
+  // Clear upload responses
+  cvUploadResponse = null;
+  coverLetterResponse = null;
+
+  // Clear any warnings
+  document.getElementById("cv-upload-id-warning").textContent = "";
+  document.getElementById("additional-files-vacancy-id-warning").textContent = "";
+
+  // Reset any form animation
+  document.querySelector("#overlay-vacancy-outer").classList.remove("form-animation");
 }
 
-document.querySelector(".form-overlay-inner").addEventListener("submit", async function applicationSubmission(el) {
+// submit application form when the form event is triggered 
+const form = document.getElementById("form-vacancy");
+const visaSponsorEleClassName = 'visa-sponsorship-vacancy'
+const noticePeriodEleClassName = 'notice-period-vacancy';
+const startDateEleClassName = 'start-date-vacancy';
+const internalCandidateEleClassName = 'internal-candidate-vacancy';
+const saluationEleClassName = 'salutation-vacancy';
+const firstNameEleClassName = 'first-name-vacancy';
+const lastNameEleClassName = 'last-name-vacancy';
+const emailEleClassName = 'email-vacancy';
+const phoneEleClassName = 'phone-vacancy';
+const futureContactEleClassName = 'consent-privacy-vacancy';
+
+form.addEventListener("submit", async function applicationSubmission(el) {
   el.preventDefault();
-  const form = document.querySelector(".form-overlay");
+
+  console.log("Form submission start!");
+
 
   const applicantDetails = {
-    VisaStatus: form.querySelector("input[name='visa_sponsorship']:checked").value,
-    NoticePeriod: form.querySelector("input[name='notice_period']:checked").value,
-    StartDate: form.querySelector("input[name='start_date']").value,
-    InternalCandidate: form.querySelector("input[name='internal_candidate']:checked").value,
-    Salutation: form.querySelector("select[name='salutation']").value,
-    FirstName: form.querySelector("input[name='first_name']").value,
-    LastName: form.querySelector("input[name='last_name']").value,
-    Email: form.querySelector("input[name='email']").value,
-    Phone: form.querySelector("input[name='phone']").value,
-    FutureContact: form.querySelector("input[name='consent_future_contact']:checked").value
+    VisaStatus: form.querySelector(`input[name="${visaSponsorEleClassName}"]:checked`).value,
+    NoticePeriod: form.querySelector(`input[name="${noticePeriodEleClassName}"]:checked`).value,
+    StartDate: form.querySelector(`input[name="${startDateEleClassName}"]`).value,
+    InternalCandidate: form.querySelector(`input[name="${internalCandidateEleClassName}"]:checked`).value,
+    Salutation: form.querySelector(`select[name="${saluationEleClassName}"]`).value,
+    FirstName: form.querySelector(`input[name="${firstNameEleClassName}"]`).value,
+    LastName: form.querySelector(`input[name="${lastNameEleClassName}"]`).value,
+    Email: form.querySelector(`input[name="${emailEleClassName}"]`).value,
+    Phone: form.querySelector(`input[name="${phoneEleClassName}"]`).value,
+    FutureContact: form.querySelector(`input[name="${futureContactEleClassName}"]:checked`).value
+
   }
+
   if (cvUploadResponse) {
     applicantDetails.cv_public_id = cvUploadResponse.public_id;
     applicantDetails.cv_version = cvUploadResponse.version;
@@ -145,8 +210,6 @@ document.querySelector(".form-overlay-inner").addEventListener("submit", async f
   }
   console.log(applicantDetails);
 
-  document.querySelector("#form-overlay-id").classList.add("form-animation");
-
   const ourPromise = await fetch("/.netlify/functions/addApplications", {
     method: "POST",
     headers: {
@@ -155,21 +218,18 @@ document.querySelector(".form-overlay-inner").addEventListener("submit", async f
     body: JSON.stringify(applicantDetails)
   })
 
-  //adding form animation effect on saving
-  document.querySelector("#manage-vacancy-form").classList.add("form-animation");
-
   if (ourPromise.status == 201) {
-    const thankYouEl = document.querySelector(".thank-you");
+    const thankYouEl = document.querySelector("#thank-you-vacancy-id");
     if (thankYouEl) {
       thankYouEl.classList.add("thank-you--visible");
-      //document.querySelector(".form-overlay-outer").style.display = "none";
-      setTimeout(closeOverlay, 1500);
+
       setTimeout(() => {
-        document.querySelector(".thank-you").classList.remove("thank-you--visible");
-      }, 1900);
+        document.querySelector("#thank-you-vacancy-id").classList.remove("thank-you--visible");
+      }, 1500);
     }
 
   } else {
     console.log("Error While Saving", ourPromise);
   }
+  setTimeout(closeOverlay, 1900);
 })

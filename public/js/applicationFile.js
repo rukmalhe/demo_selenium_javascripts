@@ -20,10 +20,11 @@ async function getSignature() {
 getSignature();
 
 //generic function to upload files
-async function filesUploadToCloudinary(fileInputID, fileLabel) {
+async function filesUploadToCloudinary(fileInputID, fileLabel, submitButtonID) {
   const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2 MB
   const fileInput = document.querySelector(`#${fileInputID}`);
   const warningElement = document.querySelector(`#${fileInputID}_warning`);
+  const submissionButton = document.querySelector(`#${submitButtonID}`);
 
   console.log(warningElement);
 
@@ -52,7 +53,7 @@ async function filesUploadToCloudinary(fileInputID, fileLabel) {
 
   try {
     isFormSubmit = false;
-    document.querySelector("#app-form-submit-button").style.opacity = "0.5";
+    submissionButton.style.opacity = "0.5";
 
     const res = await axios.post("https://api.cloudinary.com/v1_1/dnf2dypvu/auto/upload", data, {
       headers: { "Content-Type": "multipart/form-data" },
@@ -69,25 +70,27 @@ async function filesUploadToCloudinary(fileInputID, fileLabel) {
   } finally {
 
     isFormSubmit = true;
-    document.querySelector("#app-form-submit-button").style.opacity = "1";
+    submissionButton.style.opacity = "1";
   }
 }
 
 // handling CV upload
-document.querySelector("#cv_upload").addEventListener("change", async () => {
-  cvUploadResponse = await filesUploadToCloudinary("cv_upload", "CV");
+document.getElementById("cv-upload-id").addEventListener("change", async () => {
+  cvUploadResponse = await filesUploadToCloudinary("cv-upload-id", "CV", "form-submit-button-vacancy-id");
   console.log("CV uploaded");
 });
 
-// handling candiate registration
-document.querySelector("#reg_cv_upload").addEventListener("change", async () => {
-  cvUploadResponse = await filesUploadToCloudinary("reg_cv_upload", "CV");
+// handling candidate registration
+/*
+document.getElementById("reg-cv-upload").addEventListener("change", async () => {
+  cvUploadResponse = await filesUploadToCloudinary("reg-cv-upload", "CV", "form-submit-button-registration");
   console.log("CV registration completed")
 });
-
+*/
 
 //handling other files
-document.querySelector("#additional_files").addEventListener("change", async () => {
-  coverLetterResponse = await filesUploadToCloudinary("additional_files", "Cover Letter");
+document.getElementById("additional-files-vacancy-id").addEventListener("change", async () => {
+  console.log("Cover letter upload started");
+  coverLetterResponse = await filesUploadToCloudinary("additional-files-vacancy-id", "Cover Letter", "form-submit-button-vacancy-id");
   console.log("Cover letter uploaded")
 });

@@ -1,0 +1,20 @@
+/*
+BEM Structure
+-------------
+*/
+
+.button {
+  /* styles for block */
+}
+
+.button__icon {
+  /* Element */
+}
+
+.button--primary {
+  /* Modifier for block */
+}
+
+.button__icon--large {
+  /* Modifier for element */
+}

@@ -104,62 +104,72 @@
     <p>© 2025 North West Facility Ltd. All rights reserved. </p>
   </footer>
   <!-- Vacancy application Form Overlay Section -->
-  <div class="form-overlay-outer-1">
-    <div class="form-overlay-inner">
-      <h1>Automation Engineer</h1>
-      <h3>Build solutions that deliver delightful user experiences to Data Migrations and Customer Support for our
-        industry-leading PMS</h3>
-      <form class="form-overlay" id="form-overlay-id">
-        <fieldset class="form-field">
-          <legend class="form-field-title">
+  <div class="overlay overlay--vacancy" id="overlay-vacancy-outer">
+    <div class="overlay__inner" id="overlay-vacancy-inner">
+      <h1 class="overlay__title">Automation Engineer</h1>
+      <h3 class="overlay__subtitle">Build solutions that deliver delightful user experiences to Data Migrations</h3>
+      <form class="form form--vacancy" id="form-vacancy">
+        <fieldset class="form__field">
+          <legend class="form__legend">
             Do you require visa sponsorship to work for the position you are applying for?
           </legend>
-          <label class="radio-label">
-            <input type="radio" name="visa_sponsorship" value="yes" required />Yes
-          </label>
-          <label class="radio-label">
-            <input type="radio" name="visa_sponsorship" value="no" />No
-          </label>
+          <div class="form__radio-group">
+            <label class="form__radio-label">
+              <input type="radio" name="visa-sponsorship-vacancy" value="yes" required />Yes
+            </label>
+            <label class="form__radio-label">
+              <input type="radio" name="visa-sponsorship-vacancy" value="no" />No
+            </label>
+          </div>
         </fieldset>
-        <fieldset class="form-field">
-          <legend class="form-field-title">
+        <fieldset class="form__field">
+          <legend class="form__legend">
             What is your notice period?
           </legend>
-          <label class="radio-label">
-            <input type="radio" name="notice_period" value="Immediate" required />
-            Immediate
-          </label>
-          <label class="radio-label">
-            <input type="radio" name="notice_period" value="1 Week" />
-            1 Week
-          </label>
-          <label class="radio-label">
-            <input type="radio" name="notice_period" value="2 Weeks" />
-            2 Weeks
-          </label>
-          <label class="radio-label">
-            <input type="radio" name="notice_period" value="1 Month or more" />
-            1 Month or more
-          </label>
+          <div class="form__radio-group">
+            <label class="form__radio-label">
+              <input type="radio" name="notice-period-vacancy" value="Not Applicable" required />
+              Not Applicable
+            </label>
+            <label class="form__radio-label">
+              <input type="radio" name="notice-period-vacancy" value="Immediate" required />
+              Immediate
+            </label>
+            <label class="form__radio-label">
+              <input type="radio" name="notice-period-vacancy" value="1 Week" />
+              1 Week
+            </label>
+            <label class="form__radio-label">
+              <input type="radio" name="notice-period-vacancy" value="2 Weeks" />
+              2 Weeks
+            </label>
+            <label class="form__radio-label">
+              <input type="radio" name="notice-period-vacancy" value="1 Month or more" />
+              1 Month or more
+            </label>
+          </div>
         </fieldset>
-        <fieldset class="form-field">
-          <legend class="form-field-title">Earliest Start Date</legend>
-          <input type="date" name="start_date" class="date-input" placeholder="dd/mm/yyyy" required />
+        <fieldset class="form__field">
+          <legend class="form__legend">Earliest Start Date</legend>
+          <input type="date" name="start-date-vacancy" class="form__input form__input--vacancy-date"
+            placeholder="dd/mm/yyyy" required />
         </fieldset>
-        <fieldset class="form-field">
-          <legend class="form-field-title">
+        <fieldset class="form__field">
+          <legend class="form__legend">
             Are you an existing {COMPANY_NAME} (Internal Applicant)
           </legend>
-          <label class="radio-label">
-            <input type="radio" name="internal_candidate" value="yes" required />Yes
-          </label>
-          <label class="radio-label">
-            <input type="radio" name="internal_candidate" value="no" />No
-          </label>
+          <div class="form__radio-group">
+            <label class="form__radio-label">
+              <input type="radio" name="internal-candidate-vacancy" value="yes" required />Yes
+            </label>
+            <label class="form__radio-label">
+              <input type="radio" name="internal-candidate-vacancy" value="no" />No
+            </label>
+            <div>
         </fieldset>
-        <fieldset class="form-field">
-          <legend class="form-field-title">How do you like to be addressed?</legend>
-          <select name="salutation" id="salutation" required>
+        <fieldset class="form__field">
+          <legend class="form__legend">How do you like to be addressed?</legend>
+          <select name="salutation-vacancy" id="salutation-vacancy-id" required>
             <option value="">-- Please select --</option>
             <option value="Mr.">Mr.</option>
             <option value="Ms.">Ms.</option>
@@ -170,59 +180,70 @@
             <option value="Other">Other</option>
           </select>
         </fieldset>
-        <h2 class="form-section-title">Personal information</h2>
-        <fieldset class="form-field">
-          <div class="form-row">
-            <div class="form-col">
-              <label for="first_name">First name *</label>
-              <input type="text" id="first_name" name="first_name" required />
+        <h2 class="form__section--title">Personal information</h2>
+        <fieldset class="form__field">
+          <div class="form__row">
+            <div class="form__col">
+              <label for="first-name-vacancy">First name *</label>
+              <input type="text" id="first-name-vacancy" name="first-name-vacancy" required />
             </div>
-            <div class="form-col">
-              <label for="last_name">Last name *</label>
-              <input type="text" id="last_name" name="last_name" required />
+            <div class="form__col">
+              <label for="last-name-vacancy">Last name *</label>
+              <input type="text" id="last-name-vacancy" name="last-name-vacancy" required />
             </div>
           </div>
-          <div class="form-row">
-            <div class="form-col">
-              <label for="email">Email *</label>
-              <input type="email" id="email" name="email" required />
+          <div class="form__row">
+            <div class="form__col">
+              <label for="email-vacancy">Email *</label>
+              <input type="email" id="email-vacancy-id" name="email-vacancy" required />
             </div>
-            <div class="form-col">
-              <label for="phone">Phone *</label>
-              <input type="tel" id="phone" name="phone" placeholder="+64 21 123 4567" required />
+            <div class="form__col">
+              <label for="phone-vacancy">Phone *</label>
+              <input type="tel" id="phone-vacancy-id" name="phone-vacancy" placeholder="+64 21 123 4567" required />
             </div>
           </div>
 
-          <div class="form-file-group">
-            <label for="cv_upload">Upload CV (PDF)*</label>
-            <input type="file" id="cv_upload" name="cv_upload" required accept="application/pdf" />
+          <div class="form__file--group">
+            <label for="cv-upload-id">Upload CV (PDF)*</label>
+            <input type="file" id="cv-upload-id" name="cv-upload-vacancy" required accept="application/pdf"
+              aria-describedby="cv-upload-id-warning" />
           </div>
-          <div id="cv_upload_warning" class="file-warning">
+          <div id="cv-upload-id-warning" class="form__file--warning"></div>
+
+          <div class="form__file--group">
+            <label for="additional-files-vacancy-id">Additional files (PDF)</label>
+            <input type="file" id="additional-files-vacancy-id" name="additional-files-vacancy" accept="application/pdf"
+              aria-describedby="additional-files-vacancy-id-warning" />
           </div>
-          <div class="form-file-group">
-            <label for="additional_files">Additional files (PDF)</label>
-            <input type="file" id="additional_files" name="additional_files" accept="application/pdf" />
-          </div>
-          <div id="additional_files_warning" class="file-warning"></div>
+          <div id="additional-files-vacancy-id-warning" class="form__file--warning"></div>
+
         </fieldset>
-        <fieldset class="form-field">
-          <label class="checkbox-label">
-            <input type="checkbox" name="consent_privacy" required />
-            By submitting this application, I agree that I have read the
-            and confirm that {COMPANY NAME}
-            may store my personal details to process my job application.
-          </label>
-          <label class="checkbox-label">
-            <input type="checkbox" name="consent_future_contact" id="consent_future_contact" />
-            Yes, {COMPANY NAME} One can contact me directly about specific future job opportunities.
-          </label>
-          <div class="form-submit-wrap">
-            <button type="submit" class="form-submit-button" id="app-form-submit-button">Submit application</button>
+        <fieldset class="form__field">
+          <div class="form__checkbox-group">
+            <label class="form__checkbox-label">
+              <input type="checkbox" name="consent-privacy-vacancy" id="consent-privacy-vacancy" required />
+              I have read the {COMPANY NAME} Privacy Policy and consent to the processing of my personal data for this
+              job application.
+            </label>
+            <label class="form__checkbox-label">
+              <input type="checkbox" name="consent-store-details-vacancy" required />
+              By submitting this application, I agree that I have read the
+              and confirm that {COMPANY NAME}
+              may store my personal details to process my job application.
+            </label>
+            <label class="form__checkbox-label">
+              <input type="checkbox" name="consent-future-contact-vacancy" id="consent-future-contact-vacancy-id" />
+              Yes, {COMPANY NAME} One can contact me directly about specific future job opportunities.
+            </label>
+          </div>
+          <div class="form__submit-wrap">
+            <button type="submit" class="form__submit-button-vacancy" id="form-submit-button-vacancy-id">Submit
+              application</button>
           </div>
         </fieldset>
       </form>
-      <div class="form-overlay-close-btn">x</div>
-      <div class="thank-you">
+      <div class="overlay--vacancy__close-btn">x</div>
+      <div class="overlay--vacancy__thank-you" id="thank-you-vacancy-id">
         <p><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
             class="bi bi-check-circle-fill" viewBox="0 0 16 16">
             <path
@@ -232,7 +253,7 @@
     </div>
   </div>
   <!-- General Registration Form Overlay -->
-  <div class="form-overlay-outer-2">
+  <div class="overlay form-overlay-outer-2">
     <div class="form-overlay-inner">
       <h1>Register for Future Opportunities</h1>
       <h3>Share your details with us and we’ll contact you when a suitable role arises.</h3>
