@@ -1,5 +1,10 @@
 document.querySelector("#login-form").addEventListener("submit", handleSubmite)
 
+document.querySelector('#userName').value = '';
+document.querySelector('#password').value = '';
+document.querySelector('#login-error-message').style.display = 'none'; // optionally hide error
+
+
 //blocking client side java script when submission
 async function handleSubmite(evnt) {
   evnt.preventDefault();
@@ -18,6 +23,9 @@ async function handleSubmite(evnt) {
   if (ourPromise.status == 200) {
     window.location = "/admin";
   } else {
-    console.log("Try Again");
+    //show error message
+    const errorMessage = document.querySelector("#login-error-message");
+    errorMessage.style.display = "block";
+
   }
 }

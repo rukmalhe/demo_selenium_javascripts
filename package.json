@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "mocha": "^11.7.1",
     "netlify-cli": "^21.5.0"
   },
   "scripts": {
@@ -19,13 +20,17 @@
     "url": "https://github.com/rukmalhe/job-agency-service/issues"
   },
   "homepage": "https://github.com/rukmalhe/job-agency-service#readme",
-  "description": "",
   "dependencies": {
     "cloudinary": "^2.6.1",
     "cookie": "^1.0.2",
     "escape-html": "^1.0.3",
     "mongodb": "^6.16.0",
     "sanitize-html": "^2.17.0",
+    "selenium-webdriver": "^4.34.0",
     "winston": "^3.17.0"
-  }
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "description": ""
 }

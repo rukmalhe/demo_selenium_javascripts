@@ -1,0 +1,98 @@
+Selenium IDE commands
+=====================
+command - > what action to perfom
+target - >  The element selector or URL
+value - > Optional input, like the text to enter or text to assert
+
+sample: 
+{
+      "id": "assert-manage-vacancies",
+      "comment": "Verify Correct Text is present",
+      "command": "assertText",
+      "target": "css=h2",
+      "targets": [],
+      "value": "Welcome, Please Login.!"
+    },
+
+
+Command types
+=============
+Actions - These are commands that directly interact with the browser.
+
+For example:
+
+"Click" command - It is the Actions command because it directly interacts with the element on the page by clicking on it.
+
+"Type" command - It is a two-way interaction. Enters text/values ​​into the field, and the field displays them to us.
+
+Common Command Examples
+=======================
+
+Command: `open`
+Target: `/login`
+Value: n/a
+Open the `/login` URL relative to base
+
+
+Command: `assertText`
+Target: `css=h2`
+Value: `Welcome`
+Fails the Test when an `h2` tag not contains the text "Welcome"
+
+Command: `verifyText`
+Target: `css=h2`
+Value: `Welcome`
+Assert when an `h2` tag not contains the text "Welcome", the test will continue..
+
+
+Command: `assertText`
+Target: `css=a.small-link`      // . period is required
+Value: `Back to the Home Page`
+Verify 'a' small-link css contains above text
+
+
+Command:  `storeText`
+target: "css=a.small-link"
+value: "homeLinkText"
+Store the value as a variable homeLinkText
+
+Commnand: `assertTitle`
+Target: `Login Page`                 
+Value: *(empty)*
+Verify that the page title is "Login Page"
+
+Command: `verifyText`
+Target: `xpath=//p[@class='status']`
+Value:  `Success`
+Non-failing version of `assertText`
+
+Accessors - These are commands that allow us to store values ​​in a variable.
+==========
+For example:
+
+"storeTitle" command - Reads the page title and stores it in a variable. There is no interaction with the browser here.
+
+Useful commands
+===============
+
+Open - Opens the page using a URL
+
+Click - Clicks a specific item
+
+Type - Enters text/values ​​into the indicated fields
+
+Verify/assert title - Compares the specified page title with the actual one
+
+Verify/assert text - Checks whether the specified text exists on the page
+
+Verify/assert not text - Checks that the specified text does not exist on the page
+
+Verify/assert element present - Checks whether the specified element exists on the page
+
+Verify/assert element not present - Checks that the specified element is not present on the page
+
+Pause - Stops script execution for the specified time. In Value, we enter the time, eg 5000. This will cause the script to stop for 5 seconds.
+
+Close - Close browser
+
+Set window size - Resize the browser window to emulate various screen resolutions

@@ -1,5 +1,5 @@
 //overlay form
-const overlayForRegistration = document.querySelector(".form-overlay-outer-2");
+const overlayForRegistration = document.querySelector(".overlay--registration");
 
 
 
@@ -8,7 +8,7 @@ function openOverlayForRegistration(el) {
   console.log("Clicked Register button");
 
   // before calling the openOVerlay method, you have to set the form display property to null.
-  document.querySelector(".form-overlay-outer-2").style.display = "";
+  document.querySelector(".overlay--registration").style.display = "";
   if (overlayForRegistration) { overlayForRegistration.classList.add("form-overlay--is-visibility-2"); }
   else {
     console.error("Overlay element not found");
@@ -61,7 +61,7 @@ document.getElementById("general-register-form").addEventListener("submit", asyn
     const thankYouEl = document.getElementById("general-thank-you");
     if (thankYouEl) {
       thankYouEl.classList.add("thank-you--visible-2");
-      document.querySelector(".form-overlay-outer-2").style.display = "none";
+      document.querySelector(".overlay--registration").style.display = "none";
       setTimeout(closeOverlay, 1500);
       setTimeout(() => {
         document.getElementById("general-thank-you").classList.remove("thank-you--visible");
