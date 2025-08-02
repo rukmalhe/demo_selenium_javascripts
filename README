@@ -1,0 +1,132 @@
+# 🧪 Selenium WebDriverJS Test Suite for Job Agency Admin Portal
+
+This project contains automated end-to-end tests written in JavaScript using **Selenium WebDriver** and **Mocha** for the [Job Agency Admin Portal](https://relaxed-trifle-0879d7.netlify.app/login). The tests simulate real user actions like logging in, adding vacancies, uploading images, and verifying UI content.
+
+
+## 🚀 Features
+
+- ✅ Admin login/logout flow
+- ✅ Valid and invalid credential checks
+- ✅ Form submission for adding vacancies
+- ✅ File upload to Cloudinary and preview verification
+- ✅ Role-based navigation and title assertion
+- ✅ Page content and element visibility validation
+- ✅ Fully refactored using helper functions for reusability
+
+
+## 🛠️ Tech Stack
+
+- [Selenium WebDriver](https://www.selenium.dev/)
+- [Mocha](https://mochajs.org/) as test framework
+- [Node.js](https://nodejs.org/)
+- Cloudinary API for image uploads
+- Firefox browser (or Chrome, configurable)
+
+---
+
+## 📁 Folder Structure
+
+project-root/
+├── tests/
+│   ├── web-driver-js/
+│   │   ├── adminLoginTest.spec.js
+│   │   ├── addVacancy.spec.js
+│   │   └── helpers.js
+|   └── testplan
+├── public/ (optional assets folder for file uploads)
+├── package.json
+└── README.md
+
+````
+
+---
+
+## ⚙️ Setup Instructions
+
+1. **Clone the repo**
+
+```bash
+git clone https://github.com/your-username/job-agency-admin-tests.git
+cd job-agency-admin-tests
+````
+
+2. **Install dependencies**
+
+```bash
+npm install
+```
+
+3. **Update file upload path**
+
+Ensure you use an **absolute path** for file uploads, or use Node’s `path.resolve()` for a cross-platform relative solution.
+
+4. **Run the tests**
+
+```bash
+npx mocha "tests/web-driver-js/adminLoginTest.spec.js"
+```
+
+---
+
+## ✍️ Helper Functions
+
+All reusable actions like login, click safety, and input handling are placed in `helpers.js`:
+
+```js
+await fillAndSubmitLoginForm(driver, username, password)
+await clickElementSafely(driver, By.id("logout"))
+```
+
+These ensure better reliability with waits and error handling.
+
+---
+
+## ✅ Sample Test Scenario (Admin Login)
+
+* Visit `/login`
+* Verify title and welcome heading
+* Enter valid credentials and login
+* Assert redirection to home page
+* Logout and verify redirection
+
+---
+
+## 🖼️ Image Upload via Cloudinary
+
+The `addVacancy` test includes Cloudinary integration:
+
+* Signature fetched from serverless endpoint
+* Upload via `axios.post()` in frontend
+* Image preview asserted via `#photo-preview`
+
+
+---
+
+## 🧪 Sample Assertion
+
+```js
+assert.strictEqual(await driver.getTitle(), "North West Recruitment Service")
+assert.strictEqual(await driver.findElement(By.css("h1")).getText(), "Welcome ! North West Recruitment")
+```
+
+---
+
+## 🌐 Live Demo Site
+
+[🔗 https://relaxed-trifle-0879d7.netlify.app/login](https://relaxed-trifle-0879d7.netlify.app/login)
+
+---
+
+## 📌 Notes
+
+* Firefox is the default browser. For Chrome, change `.forBrowser('firefox')` to `.forBrowser('chrome')`.
+* Tests rely on **explicit waits** and fallback to **JS-based interaction** for non-interactable elements.
+* Assertions are meaningful and help verify test intent clearly.
+
+---
+
+## 📄 License
+
+MIT License — free to use, modify, and distribute with attribution.
+
+

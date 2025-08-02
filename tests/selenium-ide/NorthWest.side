@@ -2,7 +2,7 @@
   "id": "8dbc1641-f91c-4a53-b0cf-786fa143a3ed",
   "version": "2.0",
   "name": "NorthWest",
-  "url": "http://localhost:8888",
+  "url": "https://relaxed-trifle-0879d7.netlify.app/",
   "tests": [{
     "id": "6afa05ea-282c-471f-8fb1-8ab1a2c0729a",
     "name": "AdminLoginTest",
@@ -506,6 +506,6 @@
     "timeout": 300,
     "tests": ["6afa05ea-282c-471f-8fb1-8ab1a2c0729a"]
   }],
-  "urls": ["http://localhost:8888/"],
+  "urls": ["https://relaxed-trifle-0879d7.netlify.app/"],
   "plugins": []
 }
