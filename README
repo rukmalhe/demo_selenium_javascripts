@@ -73,8 +73,10 @@ Helper Functions
 All reusable actions like login, click safety, and input handling are placed in `helpers.js`:
 
 ```js
-await fillAndSubmitLoginForm(driver, username, password)
-await clickElementSafely(driver, By.id("logout"))
+await fillAndSubmitLoginForm(driver, username, password);
+await clickElementSafely(driver, By.id("logout"));
+await retryUntilLocatedAndVisible(driver, By.css("h1"));
+
 ```
 
 These ensure better reliability with waits and error handling.
@@ -99,7 +101,11 @@ The `addVacancy` test includes Cloudinary integration:
 * Upload via `axios.post()` in frontend
 * Image preview asserted via `#photo-preview`
 
-
+```js
+const previewImg = await driver.wait(until.elementLocated(By.css("#photo-preview img")), 10000);
+const imgSrc = await previewImg.getAttribute("src");
+assert(imgSrc.includes("cloudinary.com"));
+```
 ---
 
 Sample Assertion
@@ -113,7 +119,7 @@ assert.strictEqual(await driver.findElement(By.css("h1")).getText(), "Welcome ! 
 
 Live Demo Site
 
-[🔗 https://relaxed-trifle-0879d7.netlify.app/login](https://relaxed-trifle-0879d7.netlify.app/login)
+https://relaxed-trifle-0879d7.netlify.app/
 
 ---
 
