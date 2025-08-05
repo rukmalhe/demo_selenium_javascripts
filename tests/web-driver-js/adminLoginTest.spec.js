@@ -47,7 +47,7 @@ describe('AdminLoginTest', function () {
     await clickElementSafely(driver, By.id('logout'));
 
     // Post logout validation with retry and logs
-    console.log("🔍 Waiting for logout confirmation (h1)...");
+    console.log("Waiting for logout confirmation (h1)...");
     const pageHeading = await retryUntilLocatedAndVisible(driver, By.css('h1'), 4, 5000);
     assert.strictEqual(await pageHeading.getText(), "Welcome ! North West Recruitment");
 

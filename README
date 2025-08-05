@@ -3,18 +3,18 @@
 This project contains automated end-to-end tests written in JavaScript using **Selenium WebDriver** and **Mocha** for the [Job Agency Admin Portal](https://relaxed-trifle-0879d7.netlify.app/login). The tests simulate real user actions like logging in, adding vacancies, uploading images, and verifying UI content.
 
 
-## 🚀 Features
+Features
 
-- ✅ Admin login/logout flow
-- ✅ Valid and invalid credential checks
-- ✅ Form submission for adding vacancies
-- ✅ File upload to Cloudinary and preview verification
-- ✅ Role-based navigation and title assertion
-- ✅ Page content and element visibility validation
-- ✅ Fully refactored using helper functions for reusability
+- Admin login/logout flow
+- Valid and invalid credential checks
+- Form submission for adding vacancies
+- File upload to Cloudinary and preview verification
+- Role-based navigation and title assertion
+- Page content and element visibility validation
+- Fully refactored using helper functions for reusability
 
 
-## 🛠️ Tech Stack
+Tech Stack
 
 - [Selenium WebDriver](https://www.selenium.dev/)
 - [Mocha](https://mochajs.org/) as test framework
@@ -24,7 +24,7 @@ This project contains automated end-to-end tests written in JavaScript using **S
 
 ---
 
-## 📁 Folder Structure
+Folder Structure
 
 project-root/
 ├── tests/
@@ -41,7 +41,7 @@ project-root/
 
 ---
 
-## ⚙️ Setup Instructions
+Setup Instructions
 
 1. **Clone the repo**
 
@@ -68,7 +68,7 @@ npx mocha "tests/web-driver-js/adminLoginTest.spec.js"
 
 ---
 
-## ✍️ Helper Functions
+Helper Functions
 
 All reusable actions like login, click safety, and input handling are placed in `helpers.js`:
 
@@ -81,7 +81,7 @@ These ensure better reliability with waits and error handling.
 
 ---
 
-## ✅ Sample Test Scenario (Admin Login)
+ Sample Test Scenario (Admin Login)
 
 * Visit `/login`
 * Verify title and welcome heading
@@ -91,7 +91,7 @@ These ensure better reliability with waits and error handling.
 
 ---
 
-## 🖼️ Image Upload via Cloudinary
+Image Upload via Cloudinary
 
 The `addVacancy` test includes Cloudinary integration:
 
@@ -102,7 +102,7 @@ The `addVacancy` test includes Cloudinary integration:
 
 ---
 
-## 🧪 Sample Assertion
+Sample Assertion
 
 ```js
 assert.strictEqual(await driver.getTitle(), "North West Recruitment Service")
@@ -111,13 +111,13 @@ assert.strictEqual(await driver.findElement(By.css("h1")).getText(), "Welcome ! 
 
 ---
 
-## 🌐 Live Demo Site
+Live Demo Site
 
 [🔗 https://relaxed-trifle-0879d7.netlify.app/login](https://relaxed-trifle-0879d7.netlify.app/login)
 
 ---
 
-## 📌 Notes
+Notes
 
 * Firefox is the default browser. For Chrome, change `.forBrowser('firefox')` to `.forBrowser('chrome')`.
 * Tests rely on **explicit waits** and fallback to **JS-based interaction** for non-interactable elements.
@@ -125,8 +125,6 @@ assert.strictEqual(await driver.findElement(By.css("h1")).getText(), "Welcome ! 
 
 ---
 
-## 📄 License
+License
 
 MIT License — free to use, modify, and distribute with attribution.
-
-

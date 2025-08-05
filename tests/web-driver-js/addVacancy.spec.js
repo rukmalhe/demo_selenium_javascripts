@@ -55,14 +55,14 @@ describe('Add Vacancy', function () {
 
     const fileInput = await driver.findElement(By.id("add-vacancy-photo"));
     await fileInput.sendKeys(imagePath);
-    console.log('✅ File sent to input. Waiting for Cloudinary preview...');
+    console.log('File sent to input. Waiting for Cloudinary preview...');
 
     // Wait and assert preview loaded
     await waitForPhotoPreview(driver);
     const previewImg = await driver.findElement(By.css("#photo-preview img"));
     const imgSrc = await previewImg.getAttribute("src");
     assert(imgSrc.includes("res.cloudinary.com/dnf2dypvu/image/upload"), "❌ Cloudinary image not previewed.");
-    console.log("✅ Image preview success with src:", imgSrc);
+    console.log("Image preview success with src:", imgSrc);
 
     // Date fields
     await driver.findElement(By.id("published-date-vacancy")).sendKeys("2025-11-30");
