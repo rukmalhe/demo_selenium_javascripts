@@ -1,8 +1,13 @@
 // adminLoginTest.spec.js
 const { Builder, By, until } = require('selenium-webdriver');
 const assert = require('assert');
-const { fillAndSubmitLoginForm, clickElementSafely } = require('./helpers');
-
+const {
+  fillAndSubmitLoginForm,
+  clickElementSafely,
+  findVisibleElement,
+  loginAndAssert,
+  retryUntilLocatedAndVisible
+} = require('./helpers');
 
 describe('AdminLoginTest', function () {
   this.timeout(60000);
@@ -28,44 +33,36 @@ describe('AdminLoginTest', function () {
     await driver.manage().window().setRect({ width: 1158, height: 692 });
 
     assert.strictEqual(await driver.getTitle(), "Manage Vacancies");
-    assert.strictEqual(await driver.findElement(By.css("h2")).getText(), "Welcome, Please Login.!");
+    assert.strictEqual(
+      await driver.findElement(By.css("h2")).getText(),
+      "Welcome, Please Login.!"
+    );
 
     // Valid login
-    await fillAndSubmitLoginForm(driver, vars.USERNAME, vars.PASSWORD);
+    await loginAndAssert(driver, vars.USERNAME, vars.PASSWORD, true);
 
-    const homeLinkText = await driver.findElement(By.css("a.small-link")).getText();
-    assert.strictEqual(homeLinkText, "« Back to the Home Page");
-
-    // Logout
+    // Logout with retry
+    await driver.sleep(1000);
+    await retryUntilLocatedAndVisible(driver, By.id('logout'));
     await clickElementSafely(driver, By.id('logout'));
 
-    await driver.wait(until.elementLocated(By.css('h1')), 15000);
-    const pageHeading = await driver.findElement(By.css('h1')).getText();
-    assert.strictEqual(pageHeading, "Welcome ! North West Recruitment");
+    // Post logout validation with retry and logs
+    console.log("🔍 Waiting for logout confirmation (h1)...");
+    const pageHeading = await retryUntilLocatedAndVisible(driver, By.css('h1'), 4, 5000);
+    assert.strictEqual(await pageHeading.getText(), "Welcome ! North West Recruitment");
 
     const pageTitle = await driver.getTitle();
     assert.strictEqual(pageTitle, "North West Recruitment Service");
 
-    // Return to login
-    const loginLink = await driver.findElement(By.linkText("Login"));
-    await driver.wait(until.elementIsVisible(loginLink), 15000);
+    // Return to login with retry
+    await driver.sleep(2000);
+    const loginLink = await retryUntilLocatedAndVisible(driver, By.linkText("Login"), 3, 4000);
     await loginLink.click();
 
     // Invalid username
-    await fillAndSubmitLoginForm(driver, vars.WRONG_USERNAME, vars.PASSWORD);
-
-    const errorPara = await driver.wait(
-      until.elementLocated(By.css("#login-error-message > p")),
-      15000
-    );
-    await driver.wait(until.elementIsVisible(errorPara), 15000);
-    const errorText = (await errorPara.getText()).trim();
-    console.log("🔍 Actual error message:", JSON.stringify(errorText));
-    assert.strictEqual(errorText, "Invalid username or password. Please try again!.");
+    await loginAndAssert(driver, vars.WRONG_USERNAME, vars.PASSWORD, false);
 
     // Invalid password
-    await fillAndSubmitLoginForm(driver, vars.USERNAME, vars.WRONG_PASSWORD);
-    const errorText2 = (await driver.findElement(By.css("#login-error-message > p"))).getText();
-    assert.strictEqual((await errorText2).trim(), "Invalid username or password. Please try again!.");
+    await loginAndAssert(driver, vars.USERNAME, vars.WRONG_PASSWORD, false);
   });
 });
