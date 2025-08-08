@@ -63,7 +63,12 @@ Ensure you use an **absolute path** for file uploads, or use Node’s `path.reso
 4. **Run the tests**
 
 ```bash
+run login test
 npx mocha "tests/web-driver-js/adminLoginTest.spec.js"
+
+or run all the suite
+npx mocha "tests/web-driver-js"
+
 ```
 
 ---
