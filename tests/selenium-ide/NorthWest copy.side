@@ -1,0 +1,818 @@
+{
+  "id": "8dbc1641-f91c-4a53-b0cf-786fa143a3ed",
+  "version": "2.0",
+  "name": "NorthWest",
+  "url": "https://relaxed-trifle-0879d7.netlify.app/",
+  "tests": [{
+    "id": "6afa05ea-282c-471f-8fb1-8ab1a2c0729a",
+    "name": "AdminLoginTest",
+    "commands": [{
+      "id": "a04246ac-1071-4424-b8c7-2f2a734a3ca1",
+      "comment": "Login Screen Opened",
+      "command": "open",
+      "target": "/login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "abc1e5c4-874d-460a-a708-3f616b7597cd",
+      "comment": "Open in Browser Window",
+      "command": "setWindowSize",
+      "target": "1158x692",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "set-username",
+      "comment": "Store user name as a variable",
+      "command": "store",
+      "target": "rukmal",
+      "targets": [],
+      "value": "USERNAME"
+    }, {
+      "id": "set-password",
+      "comment": "Store user password as a variable",
+      "command": "store",
+      "target": "password",
+      "targets": [],
+      "value": "PASSWORD"
+    }, {
+      "id": "set-wrong-username",
+      "comment": "Store user name as a variable",
+      "command": "store",
+      "target": "rukmal1111",
+      "targets": [],
+      "value": "WRONG-USERNAME"
+    }, {
+      "id": "set-wrong-password",
+      "comment": "Store user password as a variable",
+      "command": "store",
+      "target": "password1111",
+      "targets": [],
+      "value": "WRONG-PASSWORD"
+    }, {
+      "id": "Navigate to the login page-Verify-manage-vacancies",
+      "comment": "Verify Correct Title is present",
+      "command": "verifyTitle",
+      "target": "Manage Vacancies",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "Navigate to the login page-Verify-manage-vacancies-greeting",
+      "comment": "Verify Correct Text is present",
+      "command": "verifyText",
+      "target": "css=h2",
+      "targets": [],
+      "value": "Welcome, Please Login.!"
+    }, {
+      "id": "type-username",
+      "comment": "Type the admin username",
+      "command": "type",
+      "target": "id=userName",
+      "targets": [
+        ["id=userName", "id"],
+        ["css=#userName", "css:finder"],
+        ["xpath=//input[@id='userName']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "${USERNAME}"
+    }, {
+      "id": "type-password",
+      "comment": "Type the admin password",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "${PASSWORD}"
+    }, {
+      "id": "c6052202-7000-46d7-97f7-d31613490706",
+      "comment": "Login Success",
+      "command": "click",
+      "target": "css=.btn-1",
+      "targets": [
+        ["css=.btn-1", "css:finder"],
+        ["xpath=//form[@id='login-form']/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "store-home-link-text",
+      "comment": "",
+      "command": "storeText",
+      "target": "css=a.small-link",
+      "targets": [],
+      "value": "homeLinkText"
+    }, {
+      "id": "verify-homee-navigation-link",
+      "comment": "Assert you have navigations",
+      "command": "verify",
+      "target": "homeLinkText",
+      "targets": [],
+      "value": "« Back to the Home Page"
+    }, {
+      "id": "6f1f049a-72bb-45d9-b63f-aae63b2b0e4f",
+      "comment": "Assert for Successful log out",
+      "command": "click",
+      "target": "id=logout",
+      "targets": [
+        ["id=logout", "id"],
+        ["css=#logout", "css:finder"],
+        ["xpath=//button[@id='logout']", "xpath:attributes"],
+        ["xpath=//p/button", "xpath:position"],
+        ["xpath=//button[contains(.,' Logout')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "Navigate to the Home Page",
+      "comment": "Verify Correct Title is present",
+      "command": "verifyTitle",
+      "target": "North West Recruitment Service",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "Navigate to the Home Page",
+      "comment": "Verify Correct Heading",
+      "command": "verifyText",
+      "target": "css=h1",
+      "targets": [],
+      "value": "Welcome ! North West Recruitment"
+    }, {
+      "id": "c68801f4-3fd1-4aa1-959e-4f2259f9846c",
+      "comment": "Click login button again",
+      "command": "click",
+      "target": "linkText=Login",
+      "targets": [
+        ["linkText=Login", "linkText"],
+        ["css=.btn-1:nth-child(3)", "css:finder"],
+        ["xpath=//a[contains(text(),'Login')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'admin/')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8f36aeba-5f17-4c73-81c2-48eb186e7e20",
+      "comment": "Wrong user name",
+      "command": "type",
+      "target": "id=userName",
+      "targets": [
+        ["id=userName", "id"],
+        ["css=#userName", "css:finder"],
+        ["xpath=//input[@id='userName']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "${WRONG-USERNAME}"
+    }, {
+      "id": "1bbb6619-87e7-4474-8c9f-689a291f0eba",
+      "comment": "Password Inserted",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "${PASSWORD}"
+    }, {
+      "id": "5d96da15-9f93-47d3-af33-4e53875baa8f",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-1",
+      "targets": [
+        ["css=.btn-1", "css:finder"],
+        ["xpath=//form[@id='login-form']/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e3095a06-b93b-4105-8d89-3ec688c38793",
+      "comment": "Click login button",
+      "command": "click",
+      "target": "css=.btn-1",
+      "targets": [
+        ["css=.btn-1", "css:finder"],
+        ["xpath=//form[@id='login-form']/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b6f9face-a5e8-4419-9d50-a4b48f0b7fad",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=#login-error-message > p",
+      "targets": [
+        ["css=#login-error-message > p", "css:finder"],
+        ["xpath=//div[@id='login-error-message']/p", "xpath:idRelative"],
+        ["xpath=//p", "xpath:position"],
+        ["xpath=//p[contains(.,'Invalid username or password. Please try again!.')]", "xpath:innerText"]
+      ],
+      "value": "Invalid username or password. Please try again!."
+    }, {
+      "id": "Ivalid user password",
+      "comment": "VALID user name",
+      "command": "type",
+      "target": "id=userName",
+      "targets": [
+        ["id=userName", "id"],
+        ["css=#userName", "css:finder"],
+        ["xpath=//input[@id='userName']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "${USERNAME}"
+    }, {
+      "id": "invalid password",
+      "comment": "Invalid Password Inserted",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "${WRONG-PASSWORD}"
+    }, {
+      "id": "click login button after invalid password",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-1",
+      "targets": [
+        ["css=.btn-1", "css:finder"],
+        ["xpath=//form[@id='login-form']/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b6f9face-a5e8-4419-9d50-a4b48f0b7fad-validation-errror",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=#login-error-message > p",
+      "targets": [
+        ["css=#login-error-message > p", "css:finder"],
+        ["xpath=//div[@id='login-error-message']/p", "xpath:idRelative"],
+        ["xpath=//p", "xpath:position"],
+        ["xpath=//p[contains(.,'Invalid username or password. Please try again!.')]", "xpath:innerText"]
+      ],
+      "value": "Invalid username or password. Please try again!."
+    }, {
+      "id": "13dfc9f3-41bc-42b8-b695-ee1ec48856b1",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "189eb659-919b-449a-9f3d-69fff8153fe4",
+    "name": "Add Vacancy",
+    "commands": [{
+      "id": "70b1ed64-c1a0-4d42-a70e-ac30d4655748",
+      "comment": "Log in to Admin Screen",
+      "command": "open",
+      "target": "/login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b77b6cbd-d95d-468e-afc1-73652d80471f",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1280x800",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5918ffe0-00a2-4c83-9b68-432aad0680e4",
+      "comment": "",
+      "command": "store",
+      "target": "password",
+      "targets": [],
+      "value": "PASSWORD"
+    }, {
+      "id": "c1b96997-cc08-4774-81ed-07673cc163c9",
+      "comment": "",
+      "command": "store",
+      "target": "rukmal",
+      "targets": [],
+      "value": "USERNAME"
+    }, {
+      "id": "b057fe4b-2a63-40d7-a724-9952e71c1f81",
+      "comment": "Type User Name",
+      "command": "type",
+      "target": "id=userName",
+      "targets": [
+        ["id=userName", "id"],
+        ["css=#userName", "css:finder"],
+        ["xpath=//input[@id='userName']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "${USERNAME}"
+    }, {
+      "id": "68caf381-c61f-4867-8c4b-5a7fd9377015",
+      "comment": "Type Password",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "${PASSWORD}"
+    }, {
+      "id": "431c49e0-69ce-4e3c-bbc4-a103c4c03799",
+      "comment": "Click Login Button",
+      "command": "click",
+      "target": "css=.btn-1",
+      "targets": [
+        ["css=.btn-1", "css:finder"],
+        ["xpath=//form[@id='login-form']/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "4bc19bd4-ea6b-477a-9372-7ed80a189cb6",
+      "comment": "Verify Add Vacancy Button is visible",
+      "command": "verifyElementPresent",
+      "target": "linkText=Add Vacancy",
+      "targets": [
+        ["linkText=Add Vacancy", "linkText"],
+        ["css=.add-vacancy-btn", "css:finder"],
+        ["xpath=//a[contains(@href, '/admin/addVacancy/')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,' Add Vacancy')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "22117f5a-95b8-4872-a7c5-3996da0e109c",
+      "comment": "Click on the Add Vacancy",
+      "command": "click",
+      "target": "linkText=Add Vacancy",
+      "targets": [
+        ["linkText=Add Vacancy", "linkText"],
+        ["css=.add-vacancy-btn", "css:finder"],
+        ["xpath=//a[contains(@href, '/admin/addVacancy/')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,' Add Vacancy')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2e7e6a02-532e-498c-9111-37a28e55be3d",
+      "comment": "Type Company Deails",
+      "command": "store",
+      "target": "mSupply",
+      "targets": [],
+      "value": "COMPANY-NAME"
+    }, {
+      "id": "3dad979a-478f-4475-b801-890fd98c06c6",
+      "comment": "Type Vacancy details",
+      "command": "store",
+      "target": "Would you like to do something different?  Ideally something that makes for a better world? Us too. As a QA/Tester with The mSupply Foundation, you’ll be working on software programs to help improve countries’ health systems. We’re rebuilding our legacy software (now used in 40 countries) and building a new, open-source version based on our 20 years of experience in low and middle income countries. We’re looking for someone who can help us hone our software to make it delightful to use, to be empathetic about the needs of users who are not digital natives, and get curious about how we can provide good experiences even in patchy internet.   This is a full time in office position of 40 hours per week over 5 days. The day-to-day is varied here at The mSupply Foundation and we will work with you to ensure you have job satisfaction in what you are doing.   About The mSupply Foundation We’re a NZ registered charity that works in 42 countries across the Pacific, Asia & Africa. We’re based in Auckland, and you’ll need to be as well.  We make software for managing health supply chains, and have a wonderful team of about 20 people in Kathmandu, 25 people in New Zealand and another 20 people in Africa, UK & Australia. We value people highly. By default we think the people we work with are kind, intelligent, and we treat them as such.   We have a great team. You’ll love them. That is, you’ll get lots of friendly support. We’re all doing this out of a sense of purpose. We want to make the world a better place, so you need to share that with us, else you’ll be a fish out of water.  Job Description  We’re rewriting our existing software, used in over 40 countries, to be open source. You would be part of a small team working on this rewrite.  Testing: Conducting manual and automated testing of our software  Developing and executing test plans and test cases based on requirements.  Developing and maintaining automation testing scripts. Reproducing and documenting reported issues.  Performing regression testing after bug fixes.  Collaboration: Working closely with our development team and product managers Participating in design reviews and providing feedback.  Communicating testing results and issues effectively.  Process Improvement: Contributing to the development and refinement of testing processes.  Identifying areas for improvement in testing and automation. Useful Skills You need to like software in general, and be able to understand software from a user perspective  Creative and takes initiative to problem solve Being highly organised + able to prioritise tasks well  Great people skills - you'll be working with a team, helping them to do their jobs well and treat our clients well. You'll need to be clear, considerate, friendly, and empathetic. Communicate clearly in a technical context  Must Haves  Technical Skills: Strong understanding of software testing methodologies.  Familiarity with various testing tools and techniques (e.g., manual testing, automation, API testing).  Experience with Javascript Experience with bug tracking systems (e.g., Github or Jira). Experience with building, running and maintaining end to end automated tests with frameworks like selenium IDE  Nice to Haves Knowledge of other programming languages (if applicable to automation).   Other stuff, important stuff We’re based in Auckland, and our future QA will need to be as well (hopefully you!). We will try to pay a salary that is fair.   We know that men tend to apply for jobs when they meet 60% of the qualifications, while women and people from other minority groups tend to only apply for jobs when they meet nearly all of them. With that in mind, if you like the sound of the job, we encourage you to apply!   Application closing date: 18th July 2025 Work start: ASAP The application process Only via email to jobs@msupply.foundation please - we will not consider your application if you just click “Apply now” Send us the usual stuff (CV. If you’ve written any code that’s publicly available, include a link, thanks), plus your answers to the following questions.  Tell us something about how you see the world, society, and people. You have $100,000 to spend to make the world a better place. What’s the plan? Send us a poem you wrote, or like",
+      "targets": [],
+      "value": "VACANCY-DETAIL"
+    }, {
+      "id": "a8934a9e-5e74-44f6-a31f-3201d8ea8cb9",
+      "comment": "Type Pay Rate",
+      "command": "store",
+      "target": "$65-$70",
+      "targets": [],
+      "value": "RATE"
+    }, {
+      "id": "bb4059ae-2700-424e-aa8b-036ff929d73c",
+      "comment": "Verify Add Vacancy Label in the Screen",
+      "command": "verifyText",
+      "target": "css=.intro-feature",
+      "targets": [
+        ["css=.intro-feature", "css:finder"],
+        ["xpath=//h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'Add Vacancy')]", "xpath:innerText"]
+      ],
+      "value": "Add Vacancy"
+    }, {
+      "id": "d44f3d85-a03c-4019-9702-b15a8168ad54",
+      "comment": "Type Company Name",
+      "command": "type",
+      "target": "id=CompanyName",
+      "targets": [
+        ["id=CompanyName", "id"],
+        ["css=#CompanyName", "css:finder"],
+        ["xpath=//input[@id='CompanyName']", "xpath:attributes"],
+        ["xpath=//form[@id='manage-vacancy-form']/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "${COMPANY-NAME}"
+    }, {
+      "id": "a4808fa5-5a09-4ebd-9d81-56e77fc1cddd",
+      "comment": "Type Vacancy Details",
+      "command": "type",
+      "target": "id=VacancyDescription",
+      "targets": [
+        ["id=VacancyDescription", "id"],
+        ["css=#VacancyDescription", "css:finder"],
+        ["xpath=//textarea[@id='VacancyDescription']", "xpath:attributes"],
+        ["xpath=//form[@id='manage-vacancy-form']/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "${VACANCY-DETAIL}"
+    }, {
+      "id": "bf69b068-b402-4887-9411-d28b768ef375",
+      "comment": "",
+      "command": "type",
+      "target": "id=add-vacancy-photo",
+      "targets": [],
+      "value": "/Users/rukmal/Local Sites/job-agency-service/public/images/Fallback.jpg"
+    }, {
+      "id": "c5b8bcc0-0ea3-49eb-a2f2-d50fb6a26d88",
+      "comment": "Type Date of Published",
+      "command": "type",
+      "target": "id=published-date-vacancy",
+      "targets": [],
+      "value": "2025-11-30"
+    }, {
+      "id": "9a0be074-da84-45e4-aa43-4479b23ba9da",
+      "comment": "Select Business",
+      "command": "select",
+      "target": "id=Business",
+      "targets": [
+        ["id=Business", "id"],
+        ["css=#Business", "css:finder"],
+        ["xpath=//select[@id='Business']", "xpath:attributes"],
+        ["xpath=//form[@id='manage-vacancy-form']/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Office"
+    }, {
+      "id": "8bda1bcb-fb6a-4701-a86b-4605e05b8bb3",
+      "comment": "Type Rate",
+      "command": "type",
+      "target": "id=PayRate",
+      "targets": [
+        ["id=PayRate", "id"],
+        ["css=#PayRate", "css:finder"],
+        ["xpath=//input[@id='PayRate']", "xpath:attributes"],
+        ["xpath=//form[@id='manage-vacancy-form']/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": "${RATE}"
+    }, {
+      "id": "09cf84e0-8a71-42fa-8748-6a7a07c043c4",
+      "comment": "Type Date of Expiry",
+      "command": "type",
+      "target": "id=expiry-date-vacancy",
+      "targets": [
+        ["id=expiry-date-vacancy", "id"],
+        ["name=expiry-date-vacancy", "name"],
+        ["css=#expiry-date-vacancy", "css:finder"],
+        ["xpath=//input[@id='expiry-date-vacancy']", "xpath:attributes"],
+        ["xpath=//form[@id='manage-vacancy-form']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "2025-11-30"
+    }, {
+      "id": "cb43431d-bfc1-457f-82e5-8c3212f04a2f",
+      "comment": "Click Save Button",
+      "command": "click",
+      "target": "id=submit-btn",
+      "targets": [
+        ["id=submit-btn", "id"],
+        ["css=#submit-btn", "css:finder"],
+        ["xpath=//button[@id='submit-btn']", "xpath:attributes"],
+        ["xpath=//form[@id='manage-vacancy-form']/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Save')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "b71909f0-e31a-4895-90f3-df6ed922c5a0",
+    "name": "Apply for mSupply",
+    "commands": [{
+      "id": "812a33f3-3cd3-4deb-ba1f-6dc2cc5d1776",
+      "comment": "",
+      "command": "open",
+      "target": "https://relaxed-trifle-0879d7.netlify.app/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "72a0d8ab-7d96-498d-a5c3-f1fae45e575b",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "761x818",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "aa71dc44-0571-4651-922f-de7a2bd76632",
+      "comment": "",
+      "command": "runScript",
+      "target": "window.scrollTo(0,571)",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7b2c8195-d456-4962-851e-3ed52ef28afe",
+      "comment": "",
+      "command": "click",
+      "target": "css=p > button:nth-child(2)",
+      "targets": [
+        ["css=p > button:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='view-jobs']/div/div/p/button[2]", "xpath:idRelative"],
+        ["xpath=//button[2]", "xpath:position"],
+        ["xpath=//button[contains(.,'Finance')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8516e3ef-f6c4-47bb-a22e-bdb03321af85",
+      "comment": "",
+      "command": "click",
+      "target": "css=button:nth-child(3)",
+      "targets": [
+        ["css=button:nth-child(3)", "css:finder"],
+        ["xpath=//div[@id='view-jobs']/div/div/p/button[3]", "xpath:idRelative"],
+        ["xpath=//button[3]", "xpath:position"],
+        ["xpath=//button[contains(.,'Manufacturing')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a297c57b-bace-4769-96be-5376ef64908a",
+      "comment": "",
+      "command": "click",
+      "target": "css=button:nth-child(4)",
+      "targets": [
+        ["css=button:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='view-jobs']/div/div/p/button[4]", "xpath:idRelative"],
+        ["xpath=//button[4]", "xpath:position"],
+        ["xpath=//button[contains(.,'Hospitality')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3f1fb808-17a6-4f24-9d12-dfded9c2ebf1",
+      "comment": "",
+      "command": "click",
+      "target": "css=button:nth-child(5)",
+      "targets": [
+        ["css=button:nth-child(5)", "css:finder"],
+        ["xpath=//div[@id='view-jobs']/div/div/p/button[5]", "xpath:idRelative"],
+        ["xpath=//button[5]", "xpath:position"],
+        ["xpath=//button[contains(.,'Office')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ec5f66ad-1258-4f6a-95a0-2cc0bafe4b06",
+      "comment": "",
+      "command": "click",
+      "target": "css=.client-detail:nth-child(6) > .client-text",
+      "targets": [
+        ["css=.client-detail:nth-child(6) > .client-text", "css:finder"],
+        ["xpath=//div[@id='view-jobs']/div/div[2]/div[5]/div", "xpath:idRelative"],
+        ["xpath=//div[5]/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d582be39-9063-47df-9db5-16f7a1b1803b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.client-detail:nth-child(6) path:nth-child(2)",
+      "targets": [
+        ["css=.client-detail:nth-child(6) path:nth-child(2)", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "688464ea-dbc7-4433-9fd0-9df00dcce4e9",
+      "comment": "",
+      "command": "click",
+      "target": "css=.overlay__title",
+      "targets": [
+        ["css=.overlay__title", "css:finder"],
+        ["xpath=//div[@id='overlay-vacancy-inner']/h1", "xpath:idRelative"],
+        ["xpath=//div[3]/div/h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'mSupply')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "50778a7d-af96-4887-aaa1-56512a200942",
+      "comment": "",
+      "command": "click",
+      "target": "name=visa-sponsorship-vacancy",
+      "targets": [
+        ["name=visa-sponsorship-vacancy", "name"],
+        ["css=.form__field:nth-child(1) .form__radio-label:nth-child(1) > input", "css:finder"],
+        ["xpath=//input[@name='visa-sponsorship-vacancy']", "xpath:attributes"],
+        ["xpath=//form[@id='form-vacancy']/fieldset/div/label/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ab2be8d0-0dae-44ad-af84-f389deb7ff7d",
+      "comment": "",
+      "command": "click",
+      "target": "name=notice-period-vacancy",
+      "targets": [
+        ["name=notice-period-vacancy", "name"],
+        ["css=.form__field:nth-child(2) .form__radio-label:nth-child(1) > input", "css:finder"],
+        ["xpath=//input[@name='notice-period-vacancy']", "xpath:attributes"],
+        ["xpath=//form[@id='form-vacancy']/fieldset[2]/div/label/input", "xpath:idRelative"],
+        ["xpath=//fieldset[2]/div/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1527a5c6-91b6-4012-b364-307536d7b159",
+      "comment": "",
+      "command": "click",
+      "target": "name=start-date-vacancy",
+      "targets": [
+        ["name=start-date-vacancy", "name"],
+        ["css=.form__input", "css:finder"],
+        ["xpath=//input[@name='start-date-vacancy']", "xpath:attributes"],
+        ["xpath=//form[@id='form-vacancy']/fieldset[3]/input", "xpath:idRelative"],
+        ["xpath=//fieldset[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7eecc2b6-6220-4d50-9671-59d6677d2243",
+      "comment": "",
+      "command": "type",
+      "target": "name=start-date-vacancy",
+      "targets": [
+        ["name=start-date-vacancy", "name"],
+        ["css=.form__input", "css:finder"],
+        ["xpath=//input[@name='start-date-vacancy']", "xpath:attributes"],
+        ["xpath=//form[@id='form-vacancy']/fieldset[3]/input", "xpath:idRelative"],
+        ["xpath=//fieldset[3]/input", "xpath:position"]
+      ],
+      "value": "2025-08-10"
+    }, {
+      "id": "7ec1306a-f601-40cd-a34d-086bc558871c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form__field:nth-child(4) .form__radio-label:nth-child(2)",
+      "targets": [
+        ["css=.form__field:nth-child(4) .form__radio-label:nth-child(2)", "css:finder"],
+        ["xpath=//form[@id='form-vacancy']/fieldset[4]/div/label[2]", "xpath:idRelative"],
+        ["xpath=//fieldset[4]/div/label[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "eb2a286b-72d4-431f-956b-a1c098877e18",
+      "comment": "",
+      "command": "select",
+      "target": "id=salutation-vacancy-id",
+      "targets": [],
+      "value": "label=Mr."
+    }, {
+      "id": "3fbd18ed-4978-424c-a3dd-0cc25d0e3301",
+      "comment": "",
+      "command": "click",
+      "target": "css=option:nth-child(2)",
+      "targets": [
+        ["css=option:nth-child(2)", "css:finder"],
+        ["xpath=//option[@value='Mr.']", "xpath:attributes"],
+        ["xpath=//select[@id='salutation-vacancy-id']/option[2]", "xpath:idRelative"],
+        ["xpath=//option[2]", "xpath:position"],
+        ["xpath=//option[contains(.,'Mr.')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7f2b009a-cd97-4758-a2fe-fd86b8823937",
+      "comment": "",
+      "command": "click",
+      "target": "id=first-name-vacancy",
+      "targets": [
+        ["id=first-name-vacancy", "id"],
+        ["name=first-name-vacancy", "name"],
+        ["css=#first-name-vacancy", "css:finder"],
+        ["xpath=//input[@id='first-name-vacancy']", "xpath:attributes"],
+        ["xpath=//form[@id='form-vacancy']/fieldset[6]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cdf7f411-b65d-4584-9275-ce52d3bc357f",
+      "comment": "",
+      "command": "type",
+      "target": "id=first-name-vacancy",
+      "targets": [
+        ["id=first-name-vacancy", "id"],
+        ["name=first-name-vacancy", "name"],
+        ["css=#first-name-vacancy", "css:finder"],
+        ["xpath=//input[@id='first-name-vacancy']", "xpath:attributes"],
+        ["xpath=//form[@id='form-vacancy']/fieldset[6]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "Rukmal"
+    }, {
+      "id": "ab315254-5e5c-4d18-8410-05b36d6ef06d",
+      "comment": "",
+      "command": "type",
+      "target": "id=last-name-vacancy",
+      "targets": [
+        ["id=last-name-vacancy", "id"],
+        ["name=last-name-vacancy", "name"],
+        ["css=#last-name-vacancy", "css:finder"],
+        ["xpath=//input[@id='last-name-vacancy']", "xpath:attributes"],
+        ["xpath=//form[@id='form-vacancy']/fieldset[6]/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "Hewawasam"
+    }, {
+      "id": "2aae78bc-02a4-4cf1-b9d4-f4443d224326",
+      "comment": "",
+      "command": "type",
+      "target": "id=email-vacancy-id",
+      "targets": [
+        ["id=email-vacancy-id", "id"],
+        ["name=email-vacancy", "name"],
+        ["css=#email-vacancy-id", "css:finder"],
+        ["xpath=//input[@id='email-vacancy-id']", "xpath:attributes"],
+        ["xpath=//form[@id='form-vacancy']/fieldset[6]/div[2]/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": "rukmal.hewawasam@gmail.com"
+    }, {
+      "id": "e952ef7a-862f-4aa8-b1b7-a954e03af664",
+      "comment": "",
+      "command": "type",
+      "target": "id=phone-vacancy-id",
+      "targets": [
+        ["id=phone-vacancy-id", "id"],
+        ["name=phone-vacancy", "name"],
+        ["css=#phone-vacancy-id", "css:finder"],
+        ["xpath=//input[@id='phone-vacancy-id']", "xpath:attributes"],
+        ["xpath=//form[@id='form-vacancy']/fieldset[6]/div[2]/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/input", "xpath:position"]
+      ],
+      "value": "02108781236"
+    }, {
+      "id": "5135f115-d695-4724-842a-42a6d212f43a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form__checkbox-label:nth-child(1)",
+      "targets": [
+        ["css=.form__checkbox-label:nth-child(1)", "css:finder"],
+        ["xpath=//form[@id='form-vacancy']/fieldset[7]/div/label", "xpath:idRelative"],
+        ["xpath=//fieldset[7]/div/label", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2b865224-22d3-450a-ae44-d4bab57f8cce",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form__checkbox-label:nth-child(2)",
+      "targets": [
+        ["css=.form__checkbox-label:nth-child(2)", "css:finder"],
+        ["xpath=//form[@id='form-vacancy']/fieldset[7]/div/label[2]", "xpath:idRelative"],
+        ["xpath=//fieldset[7]/div/label[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7215e98a-df68-4990-bf24-f3496243c9bc",
+      "comment": "",
+      "command": "click",
+      "target": "id=consent-future-contact-vacancy-id",
+      "targets": [
+        ["id=consent-future-contact-vacancy-id", "id"],
+        ["name=consent-future-contact-vacancy", "name"],
+        ["css=#consent-future-contact-vacancy-id", "css:finder"],
+        ["xpath=//input[@id='consent-future-contact-vacancy-id']", "xpath:attributes"],
+        ["xpath=//form[@id='form-vacancy']/fieldset[7]/div/label[3]/input", "xpath:idRelative"],
+        ["xpath=//fieldset[7]/div/label[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cc826f32-8f8f-472d-b444-a1cbb96b2be6",
+      "comment": "",
+      "command": "click",
+      "target": "id=form-submit-button-vacancy-id",
+      "targets": [
+        ["id=form-submit-button-vacancy-id", "id"],
+        ["css=#form-submit-button-vacancy-id", "css:finder"],
+        ["xpath=//button[@id='form-submit-button-vacancy-id']", "xpath:attributes"],
+        ["xpath=//form[@id='form-vacancy']/fieldset[7]/div[2]/button", "xpath:idRelative"],
+        ["xpath=//div[2]/button", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "63143e35-1307-4c20-a282-5d214aeb7bed",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["6afa05ea-282c-471f-8fb1-8ab1a2c0729a"]
+  }],
+  "urls": ["http://localhost:8888/"],
+  "plugins": []
+}
